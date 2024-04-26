@@ -38,9 +38,12 @@ session_start();
     </aside>
 
     <main>
-        <div class="flex justify-center items-center h-[670px] p-5 ">
-            <p class="font-semibold text-xl bg-green-800 text-white p-2 rounded">Selamat datang di Dashboard Admin, <?= $_SESSION['name'] ?></p>
-        </div>
-    </main>
+    <div class="flex justify-center items-center h-[670px] p-5 bg-gradient-to-r from-green-400 to-blue-500">
+        <p class="font-semibold text-xl bg-white text-green-800 p-2 rounded shadow-lg transform hover:scale-110 transition-transform duration-500 ease-in-out">
+            Selamat datang di Dashboard Admin, <?= $_SESSION['name'] ?>
+        </p>
+    </div>
+</main>
+
 </body>
 </html>
