@@ -1,15 +1,16 @@
-<?php
+<?php 
+
 include "./koneksi.php";
 
-if(isset($_POST['submitan'])) {
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $room_type = $_POST['room_type'];
-    $checkin = $_POST['checkin'];
-    $checkout = $_POST['checkout'];
+if(isset($_POST['submit_room'])) {
+    $tipe_room = $_POST['tipe_room'];
+    $bed_tipe = $_POST['bed_type'];
+    $harga = $_POST['harga'];
+    // $checkin = $_POST['checkin'];
+    // $checkout = $_POST['checkout'];
 
-    $insert_sql = "INSERT INTO tbluser (nama, phone, tipe_room, checkin, checkout)
-    VALUES ('$name', '$phone', '$room_type', '$checkin', '$checkout')";
+    $insert_sql = "INSERT INTO tblroom (tipe_room, bed_tipe, harga_permalam)
+    VALUES ('$tipe_room', '$bed_tipe', '$harga')";
     mysqli_query($con, $insert_sql);
     
     // Redirect to avoid form resubmission
@@ -18,12 +19,12 @@ if(isset($_POST['submitan'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
-    $userId = $_POST['userId'];
+    $roomId = $_POST['userId'];
 
-    $sql = "DELETE FROM tbluser WHERE id = $userId";
+    $sql = "DELETE FROM tblroom WHERE id = $roomId";
 
     if ($con->query($sql) === TRUE) {
-        header("Location: userAdmin.php");
+        header("Location: roomAdmin.php");
         exit();
     } else {
         echo "Error deleting user: " . $con->error;
@@ -31,21 +32,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
 
     $con->close();
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
 </head>
-
-<body class="bg-gray-100 font-poppins">
-
-    <!-- Aside Bar -->
+<body class="bg-gray-100">
     <aside class="bg-green-800 text-white h-screen w-[15%] fixed top-0 left-0 z-10">
         <div class="p-5">
                 <h1 class="text-2xl font-bold flex">Admin&nbsp;<span class="text-[#ffb500]">Hai</span><span class="">Loka</span></h1>
@@ -66,23 +64,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
         </div>
     </aside>
 
-    <!-- Content -->
     <main class="ml-64 p-10">
-        <h1 class="text-2xl font-bold mb-5">Admin</h1>
+        <h1 class="text-2xl font-bold mb-5">Rooms</h1>
 
         <!-- Button to add new user -->
-        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add User</button>
+        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Room</button>
 
         <!-- Table to display users -->
         <table class="w-full bg-white shadow-md rounded my-6">
             <thead>
                 <tr class="border-b">
                     <th class="text-left p-3 px-5">ID</th>
-                    <th class="text-left p-3 px-5">Name</th>
-                    <th class="text-left p-3 px-5">Phone</th>
                     <th class="text-left p-3 px-5">Tipe Kamar</th>
-                    <th class="text-left p-3 px-5">Check-in</th>
-                    <th class="text-left p-3 px-5">Check-Out</th>
+                    <th class="text-left p-3 px-5">Bed Type</th>
+                    <th class="text-left p-3 px-5">Harga per Malam</th>
                     <th class="text-left p-3 px-5">Action</th>
                 </tr>
             </thead>
@@ -91,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                 <?php
                 include "./koneksi.php";
 
-                $sql = "SELECT * FROM tbluser";
+                $sql = "SELECT * FROM tblroom";
                 $result = $con->query($sql);
                 $id = 1;
 
@@ -99,14 +94,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td class='p-3 px-5'>" . $id++ . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['nama'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['phone'] . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['tipe_room'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['checkin'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['checkout'] . "</td>";
+                        echo "<td class='p-3 px-5'>" . $row['bed_tipe'] . "</td>";
+                        echo "<td class='p-3 px-5'>" . $row['harga_permalam'] . "</td>";
                         echo "<td class='p-3 px-5'>";
-                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['nama'] . "', '" . $row['phone'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded mr-2'>Edit</button>";
-                        echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['nama'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded'>Delete</button>";
+                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['tipe_room'] . "', '" . $row['bed_tipe'] . "', '" . $row['harga_permalam'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded mr-2'>Edit</button>";
+                        echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['tipe_room'] . "', '" . $row['bed_tipe'] . "', '" . $row['harga_permalam'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded'>Delete</button>";
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -133,27 +126,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                     </button>
                 </div>
                 <form action="" method="post">
-                    <label for="name" class="block mb-2">Name:</label>
-                    <input type="text" name="name" id="name" class="w-full border border-gray-300 rounded-md mb-4" required>
-
-                    <label for="phone" class="block mb-2">Phone:</label>
-                    <input type="tel" name="phone" id="phone" class="w-full border border-gray-300 rounded-md mb-4" required>
+                    <!-- <label for="name" class="block mb-2">Type Room</label>
+                    <input type="text" name="type_room" id="name" class="w-full border border-gray-300 rounded-md mb-4" required> -->
 
                     <label for="room_type" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-city mr-2.5"></i>Room Type:</label>
-                    <select id="room_type" name="room_type" class="w-full border border-gray-300 rounded-md mb-4">
+                    <select id="room_type" name="tipe_room" class="w-full border border-gray-300 rounded-md mb-4">
                         <option value="" disabled selected>Select a room type</option>
                         <option value="Regular">Regular Room</option>
                         <option value="Deluxe">Deluxe Room</option>
                         <option value="Special">Special Room</option>
                     </select>
+                    
+                    <label for="room_type" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-city mr-2.5"></i>Room Type:</label>
+                    <select id="room_type" name="bed_type" class="w-full border border-gray-300 rounded-md mb-4">
+                        <option value="" disabled selected>Select a bed type</option>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                        <option value="King">King</option>
+                    </select>
 
-                    <label for="checkin" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-calendar mr-5"></i>Check-in</label>
+                    <!-- <label for="phone" class="block mb-2">Bed Type</label>
+                    <input type="tel" name="bed_room" id="phone" class="w-full border border-gray-300 rounded-md mb-4" required> -->
+
+                    <label for="phone" class="block mb-2">Harga per Malam</label>
+                    <input type="tel" name="harga" id="phone" class="w-full border border-gray-300 rounded-md mb-4" required>
+
+
+                    <!-- <label for="checkin" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-calendar mr-5"></i>Check-in</label>
                     <input type='date' id='checkin' name='checkin' class='w-full border border-gray-300 rounded-md mb-4'>
 
                     <label for='checkout' class='block text-sm font-medium text-gray-700'><i class="fa-solid fa-calendar mr-5"></i>Check-out</label>
-                    <input type='date' id='checkout' name='checkout' class='w-full border border-gray-300 rounded-md mb-4'>
+                    <input type='date' id='checkout' name='checkout' class='w-full border border-gray-300 rounded-md mb-4'> -->
 
-                    <button type="submit" name="submitan" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Add User</button>
+                    <button type="submit" name="submit_room" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Add User</button>
                 </form>
             </div>
         </div>
@@ -176,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
         </div>
     </div>
 
-    <!-- JavaScript for opening and closing modal -->
+    <!-- Javascript start -->
     <script>
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
@@ -198,6 +203,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
             openModal('deleteUserModal');
         }
     </script>
+    
 </body>
-
 </html>

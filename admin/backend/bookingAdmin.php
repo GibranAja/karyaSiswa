@@ -68,10 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
 
     <!-- Content -->
     <main class="ml-64 p-10">
-        <h1 class="text-2xl font-bold mb-5">Admin</h1>
+        <h1 class="text-2xl font-bold mb-5">Booking</h1>
 
         <!-- Button to add new user -->
-        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add User</button>
+        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Booking User</button>
 
         <!-- Table to display users -->
         <table class="w-full bg-white shadow-md rounded my-6">
