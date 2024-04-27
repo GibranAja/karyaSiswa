@@ -6,11 +6,12 @@ if(isset($_POST['submit_room'])) {
     $tipe_room = $_POST['tipe_room'];
     $bed_tipe = $_POST['bed_type'];
     $harga = $_POST['harga'];
+    $gambarHotel = $_POST['gambar_hotel'];
     // $checkin = $_POST['checkin'];
     // $checkout = $_POST['checkout'];
 
-    $insert_sql = "INSERT INTO tblroom (tipe_room, bed_tipe, harga_permalam)
-    VALUES ('$tipe_room', '$bed_tipe', '$harga')";
+    $insert_sql = "INSERT INTO tblroom (tipe_room, bed_tipe, harga_permalam, gambar_hotel)
+    VALUES ('$tipe_room', '$bed_tipe', '$harga', '$gambarHotel')";
     mysqli_query($con, $insert_sql);
     
     // Redirect to avoid form resubmission

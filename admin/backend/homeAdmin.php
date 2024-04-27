@@ -1,6 +1,7 @@
 <?php 
 
 session_start();
+include "./koneksi.php";
 
 ?>
 
@@ -31,7 +32,7 @@ session_start();
                     <a href="roomAdmin.php" class="block py-2 px-4 hover:bg-green-700">Rooms</a>
                 </li>
                 <li class="mb-3">
-                    <a href="bookingUser.php" class="block py-2 px-4 hover:bg-green-700">Bookings</a>
+                    <a href="bookingAdmin.php" class="block py-2 px-4 hover:bg-green-700">Bookings</a>
                 </li>
             </ul>
         </div>
