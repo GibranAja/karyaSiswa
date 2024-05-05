@@ -7,7 +7,7 @@ if (!isset($_POST['name'], $_POST['password'])) {
 }
 
 if ($stmt = $con->prepare('SELECT id,password FROM tbladmin WHERE nama=?')) {
-    $stmt->bind_param('s', $_POST['name']); // Ubah 'nama' menjadi 'name'
+    $stmt->bind_param('s', $_POST['name']);
     $stmt->execute();
     $stmt->store_result();
     if ($stmt->num_rows > 0) {
@@ -16,7 +16,7 @@ if ($stmt = $con->prepare('SELECT id,password FROM tbladmin WHERE nama=?')) {
         if (password_verify($_POST['password'], $password)) {
             session_regenerate_id();
             $_SESSION['loggedin'] = TRUE;
-            $_SESSION['name'] = $_POST['name']; // Ubah 'nama' menjadi 'name'
+            $_SESSION['name'] = $_POST['name'];
             $_SESSION['id'] = $id;
             header('Location: homeAdmin.php');
         } else {
