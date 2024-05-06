@@ -1,3 +1,13 @@
+<?php 
+session_start();
+$nh="";
+if (isset($_GET['nh'])) {
+    $nh = $_GET['nh'];
+}
+echo $nh;
+include "../admin/backend/koneksi.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +22,7 @@
 
 <body class="scroll-behavior">
     <header id="navbar" class="bg-green-800 text-white px-32 py-5 flex items-center justify-between fixed top-0 w-full z-10">
-        <a href="./index.html" class="text-4xl font-bold mr-1"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
+        <a href="index.php" class="text-4xl font-bold mr-1"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
         <nav class="text-white md:flex md:items-center md:justify-center hidden">
             <ul class="md:flex md:space-x-4 mr-24">
                 <li><a href="#Description" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Description</a></li>
@@ -34,7 +44,7 @@
             <img src="./asset/Hotel-1.png" alt="" class="rounded-3xl ml-20 w-[450px]">
             <article class="relative inline-block flex-grow text-white" style="display: flex;">
                 <div class="ml-10 p-10 bg-[#166534] rounded-3xl">
-                    <h2 class="mb-5 text-2xl font-bold">Hotel Onah</h2>
+                    <h2 class="mb-5 text-2xl font-bold"><?php echo $nh; ?></h2>
                     <h3 class="font-semibold mb-3">Location : Jalan xxx - </h3>
                     <p class="w-6/" style="box-sizing: border-box;"> Hotel ini adalah sebuah tempat yang luar biasa untuk menginap. Dengan fasilitas yang lengkap dan pelayanan yang memuaskan, hotel ini menjadi pilihan utama bagi para wisatawan.</p>
                 </div>
@@ -100,6 +110,9 @@
                 <label class="block text-sm font-medium text-gray-700">Name :</label>
                 <input type="text" name="name" class="mt-1 p-2 w-full border rounded mb-4">
 
+                <label class="block text-sm font-medium text-gray-700">Hotel :</label>
+                <input type="text" name="namahotel" class="mt-1 p-2 w-full border rounded mb-4">
+                
                 <label class="block text-sm font-medium text-gray-700">Phone Number :</label>
                 <input type="number" name="phone" class="mt-1 p-2 w-full border rounded mb-4">
 
