@@ -14,6 +14,8 @@ $row6 = mysqli_fetch_assoc($hotel1);
 $row7 = mysqli_fetch_assoc($hotel1);
 $row8 = mysqli_fetch_assoc($hotel1);
 $row9 = mysqli_fetch_assoc($hotel1);
+
+
 mysqli_close($con);
 ?>
 

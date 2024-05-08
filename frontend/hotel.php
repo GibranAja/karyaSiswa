@@ -169,7 +169,7 @@ include "../admin/backend/koneksi.php";
             const sections = document.querySelectorAll('section[id]');
             const navbarLinks = document.querySelectorAll('#navbar a');
 
-            sections.forEach(section => {
+             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 100;
                 const sectionHeight = section.clientHeight;
                 const id = section.getAttribute('id');

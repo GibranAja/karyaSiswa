@@ -17,20 +17,20 @@ if(isset($_POST['submitan'])) {
     exit();
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
-    $userId = $_POST['userId'];
+// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
+//     $userId = $_POST['userId'];
 
-    $sql = "DELETE FROM tbluser WHERE id = $userId";
+//     $sql = "DELETE FROM tbladmin WHERE id = $userId";
 
-    if ($con->query($sql) === TRUE) {
-        header("Location: userAdmin.php");
-        exit();
-    } else {
-        echo "Error deleting user: " . $con->error;
-    }
+//     if ($con->query($sql) === TRUE) {
+//         header("Location: userAdmin.php");
+//         exit();
+//     } else {
+//         echo "Error deleting user: " . $con->error;
+//     }
 
-    $con->close();
-}
+//     $con->close();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -79,11 +79,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                 <tr class="border-b">
                     <th class="text-left p-3 px-5">ID</th>
                     <th class="text-left p-3 px-5">Name</th>
-                    <th class="text-left p-3 px-5">Phone</th>
-                    <th class="text-left p-3 px-5">Tipe Kamar</th>
+                    <th class="text-left p-3 px-5">Email</th>
+                    <!-- <th class="text-left p-3 px-5">Tipe Kamar</th>
                     <th class="text-left p-3 px-5">Check-in</th>
                     <th class="text-left p-3 px-5">Check-Out</th>
-                    <th class="text-left p-3 px-5">Action</th>
+                    <th class="text-left p-3 px-5">Action</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                 <?php
                 include "./koneksi.php";
 
-                $sql = "SELECT * FROM tbluser";
+                $sql = "SELECT * FROM tbladmin";
                 $result = $con->query($sql);
                 $id = 1;
 
@@ -100,13 +100,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                         echo "<tr>";
                         echo "<td class='p-3 px-5'>" . $id++ . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['nama'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['phone'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['tipe_room'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['checkin'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['checkout'] . "</td>";
+                        echo "<td class='p-3 px-5'>" . $row['email'] . "</td>";
+                        // echo "<td class='p-3 px-5'>" . $row['tipe_room'] . "</td>";
+                        // echo "<td class='p-3 px-5'>" . $row['checkin'] . "</td>";
+                        // echo "<td class='p-3 px-5'>" . $row['checkout'] . "</td>";
                         echo "<td class='p-3 px-5'>";
-                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['nama'] . "', '" . $row['phone'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded mr-2'>Edit</button>";
-                        echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['nama'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded'>Delete</button>";
+                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['nama'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded mr-2'>Edit</button>";
+                        // echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['nama'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded'>Delete</button>";
                         echo "</td>";
                         echo "</tr>";
                     }
