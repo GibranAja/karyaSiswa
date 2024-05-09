@@ -1,21 +1,18 @@
-<?php 
+<?php
 
 include "./koneksi.php";
 
-if(isset($_POST['submit_room'])) {
+if (isset($_POST['submit_room'])) {
     $tipe_room = $_POST['tipe_room'];
     $bed_tipe = $_POST['bed_type'];
     $harga = $_POST['harga'];
     $gambarHotel = $_POST['gambar_hotel'];
-    // $checkin = $_POST['checkin'];
-    // $checkout = $_POST['checkout'];
 
     $insert_sql = "INSERT INTO tblroom (tipe_room, bed_tipe, harga_permalam, gambar_hotel)
     VALUES ('$tipe_room', '$bed_tipe', '$harga', '$gambarHotel')";
     mysqli_query($con, $insert_sql);
-    
-    // Redirect to avoid form resubmission
-    header("Location: ".$_SERVER['PHP_SELF']);
+
+    header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
 
@@ -38,16 +35,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+
 <body class="bg-gray-100">
     <aside class="bg-green-800 text-white h-screen w-[15%] fixed top-0 left-0 z-10">
         <div class="p-5">
-                <h1 class="text-2xl font-bold flex">Admin&nbsp;<span class="text-[#ffb500]">Hai</span><span class="">Loka</span></h1>
+            <h1 class="text-2xl font-bold flex">Admin&nbsp;<span class="text-[#ffb500]">Hai</span><span class="">Loka</span></h1>
             <ul class="mt-5">
                 <li class="mb-3">
                     <a href="homeAdmin.php" class="block py-2 px-4 hover:bg-green-700">Home</a>
@@ -68,10 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
     <main class="ml-64 p-10">
         <h1 class="text-2xl font-bold mb-5">Rooms</h1>
 
-        <!-- Button to add new user -->
         <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Room</button>
 
-        <!-- Table to display users -->
         <table class="w-full bg-white shadow-md rounded my-6">
             <thead>
                 <tr class="border-b">
@@ -83,13 +80,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                 </tr>
             </thead>
             <tbody>
-                <!-- PHP code to fetch and display users from database -->
                 <?php
                 include "./koneksi.php";
 
+                $results_per_page = 5;
                 $sql = "SELECT * FROM tblroom";
                 $result = $con->query($sql);
-                $id = 1;
+                $number_of_results = mysqli_num_rows($result);
+                $number_of_pages = ceil($number_of_results / $results_per_page);
+
+                if (!isset($_GET['page'])) {
+                    $page = 1;
+                } else {
+                    $page = $_GET['page'];
+                }
+
+                $this_page_first_result = ($page - 1) * $results_per_page;
+
+                $sql = "SELECT * FROM tblroom LIMIT " . $this_page_first_result . ',' .  $results_per_page;
+                $result = $con->query($sql);
+                $id = 1 + $this_page_first_result;
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -112,6 +122,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                 ?>
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-5">
+            <?php
+            if ($page > 1) {
+                echo '<a href="roomAdmin.php?page=' . ($page - 1) . '" class="mx-1 px-3 py-2 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-md">Prev</a>';
+            }
+
+            for ($i = max(1, $page - 2); $i <= min($number_of_pages, $page + 2); $i++) {
+                $activeClass = ($i == $page) ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400';
+                echo '<a href="roomAdmin.php?page=' . $i . '" class="mx-1 px-3 py-2 ' . $activeClass . ' rounded-md">' . $i . '</a>';
+            }
+
+            if ($page < $number_of_pages) {
+                echo '<a href="roomAdmin.php?page=' . ($page + 1) . '" class="mx-1 px-3 py-2 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-md">Next</a>';
+            }
+            ?>
+        </div>
     </main>
 
     <!-- Modal for adding new user -->
@@ -137,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                         <option value="Deluxe">Deluxe Room</option>
                         <option value="Special">Special Room</option>
                     </select>
-                    
+
                     <label for="room_type" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-city mr-2.5"></i>Room Type:</label>
                     <select id="room_type" name="bed_type" class="w-full border border-gray-300 rounded-md mb-4">
                         <option value="" disabled selected>Select a bed type</option>
@@ -204,6 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
             openModal('deleteUserModal');
         }
     </script>
-    
+
 </body>
+
 </html>
