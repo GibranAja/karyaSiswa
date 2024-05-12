@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/akar-icons-fonts"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Pemesanan Berhasil</title>
+    <style>
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .circle-animation {
+            animation: pulse 3s infinite;
+        }
+    </style>
+</head>
+<body class="bg-[#f0f0f0] flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-2xl max-w-md mx-auto">
+        <div class="flex items-center justify-center mb-6">
+            <div class="bg-[#FFB000] rounded-full p-4 shadow-lg circle-animation">
+                <i class="fas fa-check-circle text-green-800 text-4xl"></i>
+            </div>
+        </div>
+        <h1 class="text-3xl font-bold text-center mb-4 text-green-800">Pemesanan <span class="text-[#FFB000]">Berhasil!</span></h1>
+        <p class="text-center mb-8 text-gray-600">Terima kasih telah memesan di Hailoka. Kami akan segera memproses pemesanan Anda.</p>
+        <div class="flex justify-center">
+            <a href="../../frontend/index.php" class="bg-green-800 hover:bg-[#1d422b] text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300">
+                Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+</body>
+</html>

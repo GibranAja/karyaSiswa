@@ -28,11 +28,27 @@ mysqli_close($con);
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/akar-icons-fonts"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>Traveloka jadi jadian</title>
+    <title>Hailoka</title>
+    <style>
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+
 </head>
 <body style="scroll-behavior: smooth;" class="bg-[#f0f0f0]">
     <header id="navbar" class="bg-green-800 text-white px-32 py-5 flex items-center justify-between fixed top-0 w-full z-10">
-        <a href="#" class="text-4xl font-bold mr-10"><span class="text-[#FFB000]">Hou</span><span class="text-[#F5F5DC]">tel</span></a>
+        <a href="#" class="text-4xl font-bold mr-10"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
         <button class="md:hidden">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
@@ -251,35 +267,6 @@ mysqli_close($con);
           </div>
     </section>
 
-    <!-- Booking Section -->
-    <!-- <section id="booking">
-      <form action="">
-        <div class="bg-[#f0f0f0] p-10">
-            <h1 class="font-bold text-2xl ml-96 mb-10"><i class="fa-solid fa-ticket mr-5"></i>Booking</h1>
-            <div class="bg-white p-12 rounded-2xl shadow-2xl max-w-md mx-auto">
-              <h2 class="text-[#88AD6A] font-bold text-lg mb-10"><i class="fa-solid fa-eye mr-2.5"></i>Recently Viewed Hotels</h2>
-              
-              <label for="location" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-city mr-2.5"></i>City or hotel name:</label>
-              <input type="text" id="location" name="location" class="mt-1 p-2 w-full border rounded mb-4">
-              
-              <div class="grid grid-cols-2 gap-x-4 mb-4">
-                <div>
-                  <label for="checkin" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-calendar mr-5"></i>Check-in</label>
-                  <input type='date' id='checkin' name='checkin' value='2024-03-03' class='mt-1 p-2 w-full border rounded'>
-                </div>
-          
-                <div>
-                  <label for='checkout' class='block text-sm font-medium text-gray-700'><i class="fa-solid fa-calendar mr-5"></i>Check-out</label>
-                  <input type='date' id='checkout' name='checkout' value='2024-03-04' class='mt-1 p-2 w-full border rounded'>
-                </div>
-              </div>
-              
-                <button type=”submit” class="bg-[#416657] mt-3 px-5 py-2 rounded focus:outline-none focus:border-blue hover:bg-[#12372A] text-white duration-200 transition-all">Search Hotels</button>
-          
-            </div> 
-          </div>
-        </form> 
-    </section> -->
 
     <section class="flex flex-col items-center" id="services">
         <div class="container mx-auto px-4">
@@ -346,6 +333,13 @@ mysqli_close($con);
     </footer>    
 
     <script>
+window.addEventListener('load', function() {
+  const elements = document.querySelectorAll('body > *:not(script)');
+    elements.forEach(element => {
+    element.classList.add('fade-in');
+  });
+});
+
       document.addEventListener("DOMContentLoaded", function() {
   const cards = document.querySelectorAll('.max-w-sm.rounded-lg.overflow-hidden.shadow-lg.m-2.bg-white');
   const loadMoreBtn = document.getElementById('loadMore');

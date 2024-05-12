@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
                     <a href="bookingAdmin.php" class="block py-2 px-4 hover:bg-green-700">Bookings</a>
                 </li>
             </ul>
+            <a href="logout.php" class="bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-2 w-[12%] top-[560px] text-center fixed ">Logout</a>
         </div>
     </aside>
 

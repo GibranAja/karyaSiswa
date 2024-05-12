@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     VALUES ('$name', '$phone', '$hotel', '$room_type', '$checkin', '$checkout')";
 
     if ($con->query($sql) === TRUE) {
-        header("Location: ../../frontend/hotel.php");
+        header("Location: ./bookingSucces.html");
         exit();
     } else {
         echo "Error: " . $sql . "<br>";

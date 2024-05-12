@@ -22,7 +22,7 @@ include "../admin/backend/koneksi.php";
 
 <body class="scroll-behavior">
     <header id="navbar" class="bg-green-800 text-white px-32 py-5 flex items-center justify-between fixed top-0 w-full z-10">
-        <a href="index.php" class="text-4xl font-bold mr-1"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
+        <a href="../frontend/index.php" class="text-4xl font-bold mr-1"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
         <nav class="text-white md:flex md:items-center md:justify-center hidden">
             <ul class="md:flex md:space-x-4 mr-24">
                 <li><a href="#Description" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Description</a></li>
