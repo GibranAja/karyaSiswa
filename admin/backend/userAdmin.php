@@ -63,7 +63,7 @@ if(isset($_POST['submitan'])) {
                     <a href="bookingAdmin.php" class="block py-2 px-4 hover:bg-green-700">Bookings</a>
                 </li>
             </ul>
-            <a href="logout.php" class="bg-red-500 rounded-2xl hover:bg-red-600 text-white font-bold py-4 px-2 w-[12%] top-[560px] text-center fixed ">Logout</a>
+            <a href="#" onclick="openModal('logoutModal')" class="bg-red-500 hover:bg-red-600 text-white font-bold rounded-2xl py-4 px-2 w-[12%] top-[560px] text-center fixed">Logout</a>
         </div>
     </aside>
 
@@ -177,16 +177,32 @@ if(isset($_POST['submitan'])) {
         </div>
     </div>
 
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="modal-content bg-white p-8 w-96 mx-auto rounded shadow-lg">
+                <h1 class="text-2xl font-bold mb-4">Logout</h1>
+                <p class="mb-4">Are you sure you want to logout?</p>
+                <div class="flex justify-end">
+                    <button type="button" onclick="closeModal('logoutModal')" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2">Cancel</button>
+                    <a href="logout.php" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for opening and closing modal -->
     <script>
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
             document.body.classList.add('overflow-hidden');
+            document.getElementById(modalId).classList.remove('hidden');
         }
 
         function closeModal(id) {
             document.getElementById(id).classList.add('hidden');
             document.body.classList.remove('overflow-hidden');
+            document.getElementById(modalId).classList.add('hidden')
         }
 
         function openEditModal(id, name, phone) {
