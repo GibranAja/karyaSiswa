@@ -3,7 +3,7 @@ session_start();
 
 include "../admin/backend/koneksi.php";
 
-$query = "SELECT namahotel FROM tblhotel";
+$query = "SELECT namahotel, gambar_hotel FROM tblhotel";
 $hotel1 = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($hotel1);
 $row2 = mysqli_fetch_assoc($hotel1);
@@ -127,137 +127,110 @@ mysqli_close($con);
         <h2 class="text-center text-2xl text-700 mb-10 font-bold"><span class="text-[#FF902A]">Recomended</span> for you</h2>
         <div id="cardContainer" class="flex flex-wrap justify-around m-5">
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-full" src="<?php echo $row['gambar_hotel']; ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row2['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row2['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row2['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row2['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row3['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row3['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row3['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row3['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row4['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row4['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row4['namahotel'] ?> ';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row4['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row5['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row5['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row5['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row5['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row6['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row6['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row6['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row6['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row7['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row7['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row7['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row7['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row8['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row8['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row8['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row8['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-              <img class="w-full" src="./asset/Hotel-1.png" alt="Sunset in the mountains">
+              <img class="w-[384px] h-[336px]" src="<?php echo $row9['gambar_hotel'] ?>" alt="Sunset in the mountains">
               <div class="px-6 py-4">
                 <div class="flex justify-between items-end">
                   <div class="font-bold text-xl mb-2"><?php echo $row9['namahotel'] ?></div>
                   <span class="text-[#374B43] font-bold text-lg block">Rp.600.000</span>
                 </div>
-                <p class="text-gray-700 text-base">
-                  <i class="ai-check-in mr-5"></i>Location : Jakarta
-                </p>
                 <div class="mt-4 flex justify-end">
-                  <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>';">Book Now</button>
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row9['gambar_hotel'] ?>';">Book Now</button>
                 </div>
               </div>
             </div>

@@ -1,11 +1,21 @@
 <?php
 session_start();
 $nh = "";
+$gh = "";
+
 if (isset($_GET['nh'])) {
     $nh = $_GET['nh'];
 }
+
+if (isset($_GET['gh'])) {
+    $gh = $_GET['gh'];
+}
+
 echo $nh;
+echo $gh;
+
 include "../admin/backend/koneksi.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +51,7 @@ include "../admin/backend/koneksi.php";
         <main class="gap-2" style="box-sizing: border-box;">
             <h2 class="col-span-3 ml-20 text-2xl text-700 mb-10 font-bold mt-28">Description <span class="text-[#FF902A]">Hotel</span></h2>
             <div class="flex col-span-2" style="align-items: flex-start;">
-                <img src="./asset/Hotel-1.png" alt="" class="rounded-3xl ml-20 w-[450px]">
+                <img src="<?php echo $gh; ?>" alt="" class="rounded-3xl ml-20 w-[384px] h-[336px]">
                 <article class="relative inline-block flex-grow text-white" style="display: flex;">
                     <div class="ml-10 p-10 bg-[#166534] rounded-3xl">
                         <h2 class="mb-5 text-2xl font-bold"><?php echo $nh; ?></h2>
