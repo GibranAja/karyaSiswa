@@ -247,7 +247,7 @@ mysqli_close($con);
             <div class="flex flex-wrap -mx-2">
                 <div class="w-full md:w-1/3 px-2">
                     <div class="flex flex-col items-center border-0"> 
-                        <img src="./asset/element.png" class="w-24 h-24 p-3" alt="Kopi 1">
+                        <img src="./asset/MiniHotel.png" class="w-24 h-28 p-3" alt="Kopi 1">
                         <div class="text-center">
                             <h5 class="text-sm font-bold">Choose your Hotel</h5> 
                             <p class="text-sm">There are 20+ hotels for you</p>
@@ -256,7 +256,7 @@ mysqli_close($con);
                 </div>
                 <div class="w-full md:w-1/3 px-2">
                     <div class="flex flex-col items-center border-0"> 
-                        <img src="./asset/element.png" class="w-24 h-24 p-3" alt="Kopi 2">
+                        <img src="./asset/Hotel Serve.png" class="w-32 h-40 p-3" alt="Kopi 2">
                         <div class="text-center">
                             <h5 class="text-sm font-bold">We enjoy it to you</h5>
                             <p class="text-sm">Choose delivery service</p>
@@ -265,7 +265,7 @@ mysqli_close($con);
                 </div>
                 <div class="w-full md:w-1/3 px-2">
                     <div class="flex flex-col items-center border-0">
-                        <img src="./asset/element.png" class="w-24 h-24 p-3" alt="Kopi 3">
+                        <img src="./asset/Enjoy Journey.png" class="w-52 h-28 p-3" alt="Kopi 3">
                         <div class="text-center">
                             <h5 class="text-sm font-bold">Enjoy your travel</h5> 
                             <p class="text-sm">Choose delivery service</p>
