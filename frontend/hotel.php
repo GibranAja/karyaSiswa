@@ -2,6 +2,7 @@
 session_start();
 $nh = "";
 $gh = "";
+$lh = "";
 
 if (isset($_GET['nh'])) {
     $nh = $_GET['nh'];
@@ -11,8 +12,13 @@ if (isset($_GET['gh'])) {
     $gh = $_GET['gh'];
 }
 
+if (isset($_GET['lh'])) {
+    $lh = $_GET['lh'];
+}
+
 echo $nh;
 echo $gh;
+echo $lh;
 
 include "../admin/backend/koneksi.php";
 
@@ -55,7 +61,7 @@ include "../admin/backend/koneksi.php";
                 <article class="relative inline-block flex-grow text-white" style="display: flex;">
                     <div class="ml-10 p-10 bg-[#166534] rounded-3xl">
                         <h2 class="mb-5 text-2xl font-bold"><?php echo $nh; ?></h2>
-                        <h3 class="font-semibold mb-3">Location : Jalan xxx - </h3>
+                        <h3 class="font-semibold mb-3">Location : <?php echo $lh ?></h3>
                         <p class="w-6/" style="box-sizing: border-box;"> Hotel ini adalah sebuah tempat yang luar biasa untuk menginap. Dengan fasilitas yang lengkap dan pelayanan yang memuaskan, hotel ini menjadi pilihan utama bagi para wisatawan.</p>
                     </div>
                     <div class="absolute left-[2%] top-[100%] p-10 ml-6 mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1">
@@ -78,7 +84,7 @@ include "../admin/backend/koneksi.php";
         <h2 class="text-center text-2xl text-700 mb-10 font-bold"><span class="text-[#FF902A]">Recomended</span> for you</h2>
         <div id="cardContainer" class="flex flex-wrap justify-around m-5">
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-                <img class="w-full" src="./asset/Kamar.png" alt="Sunset in the mountains">
+                <img class="w-full" src="./asset/Kamar Reguler.png" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
                         <div class="font-bold text-lg mb-2">Regular Room</div>
@@ -88,7 +94,7 @@ include "../admin/backend/koneksi.php";
                 </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-                <img class="w-full" src="./asset/Kamar.png" alt="Sunset in the mountains">
+                <img class="w-[270px] h-[148px]" src="./asset/Kamar Deluxe.jpg" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
                         <div class="font-bold text-lg mb-2">Deluxe Room</div>
@@ -98,7 +104,7 @@ include "../admin/backend/koneksi.php";
                 </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-                <img class="w-full" src="./asset/Kamar.png" alt="Sunset in the mountains">
+                <img class="w-[270px] h-[148px]" src="./asset/Kamar Special.jpg" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
                         <div class="font-bold text-lg mb-2">Special Room</div>
