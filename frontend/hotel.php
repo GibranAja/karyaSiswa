@@ -39,44 +39,44 @@ include "../admin/backend/koneksi.php";
 
 <body class="scroll-behavior">
     <header id="navbar" class="bg-green-800 text-white px-32 py-5 flex items-center justify-between fixed top-0 w-full z-10">
-        <a href="../frontend/index.php" class="text-4xl font-bold mr-1"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
-        <nav class="text-white md:flex md:items-center md:justify-center hidden">
-            <ul class="md:flex md:space-x-4 mr-24">
-                <li><a href="#Description" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Description</a></li>
-                <li><a href="#room" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Rooms</a></li>
-                <li><a href="#booking" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Booking</a></li>
-            </ul>
-        </nav>
-        <button class="md:hidden">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
+    <a href="../frontend/index.php" class="text-4xl font-bold mr-1"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
+    <nav class="text-white md:flex md:items-center md:justify-center hidden" id="nav-menu">
+        <ul class="md:flex md:space-x-4 mr-24">
+        <li><a href="#Description" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Description</a></li>
+        <li><a href="#room" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Rooms</a></li>
+        <li><a href="#booking" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Booking</a></li>
+        </ul>
+    </nav>
+    <button class="md:hidden" id="hamburger-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
     </header>
 
-    <section id="Description">
-        <main class="gap-2" style="box-sizing: border-box;">
-            <h2 class="col-span-3 ml-20 text-2xl text-700 mb-10 font-bold mt-28">Description <span class="text-[#FF902A]">Hotel</span></h2>
-            <div class="flex col-span-2" style="align-items: flex-start;">
-                <img src="<?php echo $gh; ?>" alt="" class="rounded-3xl ml-20 w-[384px] h-[336px]">
-                <article class="relative inline-block flex-grow text-white" style="display: flex;">
-                    <div class="ml-10 p-10 bg-[#166534] rounded-3xl">
-                        <h2 class="mb-5 text-2xl font-bold"><?php echo $nh; ?></h2>
-                        <h3 class="font-semibold mb-3">Location : <?php echo $lh ?></h3>
-                        <p class="w-6/" style="box-sizing: border-box;"> <?php echo $dh ?></p>
-                    </div>
-                    <div class="absolute left-[2%] top-[100%] p-10 ml-6 mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1">
-                        <h2 class="mb-2 text-xl font-bold">Facilities</h2>
-                        <ul>
-                            <li><i class="ai-air mr-2"></i>AC</li>
-                            <li><i class="ai-utensils mr-2"></i>Restaurant</li>
-                            <li><i class="fa-sharp fa-solid fa-person-swimming mr-2"></i>Swimming pool</li>
-                            <li><i class="ai-wifi mr-2"></i>Wifi</li>
-                            <li><i class="fa-sharp fa-solid fa-p mr-2"></i>Parking</li>
-                            <li><i class="fa-sharp fa-solid fa-elevator mr-2"></i>Elevator</li>
-                        </ul>
-                    </div>
-                </article>
+    <section id="Description" class="px-4 py-8 md:px-8 lg:px-16">
+        <main class="gap-2">
+            <h2 class="col-span-3 ml-5 md:ml-10 lg:ml-20 text-2xl text-700 mb-10 font-bold mt-8 md:mt-14 lg:mt-28">Description <span class="text-[#FF902A]">Hotel</span></h2>
+            <div class="flex flex-col md:flex-row md:items-start">
+            <img src="<?php echo $gh; ?>" alt="" class="rounded-3xl mx-auto md:ml-5 lg:ml-20 mb-6 md:mb-0 w-full md:w-[384px] h-auto md:h-[336px]">
+            <article class="relative inline-block flex-grow text-white md:ml-6 lg:ml-10">
+                <div class="p-5 md:p-10 bg-[#166534] rounded-3xl">
+                <h2 class="mb-5 text-xl md:text-2xl font-bold"><?php echo $nh; ?></h2>
+                <h3 class="font-semibold mb-3">Location : <?php echo $lh ?></h3>
+                <p class="w-full md:w-6/7"><?php echo $dh ?></p>
+                </div>
+                <div class="p-5 md:p-10 ml-2 md:ml-6 mr-2 md:mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1">
+                <h2 class="mb-2 text-xl font-bold">Facilities</h2>
+                <ul>
+                    <li><i class="ai-air mr-2"></i>AC</li>
+                    <li><i class="ai-utensils mr-2"></i>Restaurant</li>
+                    <li><i class="fa-sharp fa-solid fa-person-swimming mr-2"></i>Swimming pool</li>
+                    <li><i class="ai-wifi mr-2"></i>Wifi</li>
+                    <li><i class="fa-sharp fa-solid fa-p mr-2"></i>Parking</li>
+                    <li><i class="fa-sharp fa-solid fa-elevator mr-2"></i>Elevator</li>
+                </ul>
+                </div>
+            </article>
             </div>
         </main>
     </section>
@@ -217,6 +217,15 @@ include "../admin/backend/koneksi.php";
                     });
                 }
             });
+        });
+
+        
+        const hamburgerBtn = document.querySelector('#hamburger-btn');
+        const navMenu = document.querySelector('#nav-menu');
+
+
+        hamburgerBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('hidden');
         });
     </script>
 

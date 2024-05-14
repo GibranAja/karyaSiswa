@@ -54,12 +54,12 @@ mysqli_close($con);
     <a href="#" class="text-2xl md:text-4xl font-bold mr-4 md:mr-10">
       <p class="text-[#FFB000]">Hai<span class="text-[#F5F5DC]">loka</span></p>
     </a>
-    <button class="md:hidden">
+    <button class="md:hidden" id="hamburger-btn">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-    <nav class="text-white md:flex md:items-center md:justify-center hidden">
+    <nav id="nav-menu" class="text-white md:flex md:items-center md:justify-center hidden">
       <ul class="md:flex md:space-x-4 mr-0 md:mr-24 flex flex-col items-center md:flex-row">
         <li class="mb-2 md:mb-0">
           <a href="#Home" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Home</a>
@@ -84,12 +84,11 @@ mysqli_close($con);
         <div class="bg-green-700 p-6 md:p-10 rounded-3xl md:mb-0 mb-8">
           <div class="w-full md:w-96">
             <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-snug"> Enjoy your <span class="text-[#FF920A]">travel</span> comfortably </h2>
-            <p class="text-white mb-4 md:mb-5"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis qui natus </p>
+            <p class="text-white mb-4 md:mb-5"> Tunggu apalagi, mau mencari hotel yang direkomendasikan? Tinggal klik tombol di bawah ini aja!!</p>
             <div class="flex items-center gap-4 flex-wrap">
-              <button class="bg-[#939B62] text-white px-6 md:px-8 py-2 rounded-full flex items-center gap-1.5 mb-2 md:mb-0">
+              <button href="#hotel" class="bg-[#939B62] text-white px-6 md:px-8 py-2 rounded-full flex items-center gap-1.5 mb-2 md:mb-0">
                 <span> Look Hotels Now </span>
               </button>
-              <button class="px-6 md:px-8 py-2 text-[#ff710a] hover:text-[#ff920a] font-extrabold duration-200 transition-all mb-2 md:mb-0">More menu</button>
             </div>
           </div>
         </div>
@@ -376,6 +375,14 @@ mysqli_close($con);
         }
       });
     });
+
+    
+const hamburgerBtn = document.querySelector('#hamburger-btn');
+const navMenu = document.querySelector('#nav-menu');
+
+hamburgerBtn.addEventListener('click', () => {
+  navMenu.classList.toggle('hidden');
+});
   </script>
 </body>
 
