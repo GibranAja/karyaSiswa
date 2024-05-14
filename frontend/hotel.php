@@ -3,6 +3,7 @@ session_start();
 $nh = "";
 $gh = "";
 $lh = "";
+$dh = "";
 
 if (isset($_GET['nh'])) {
     $nh = $_GET['nh'];
@@ -16,9 +17,9 @@ if (isset($_GET['lh'])) {
     $lh = $_GET['lh'];
 }
 
-echo $nh;
-echo $gh;
-echo $lh;
+if (isset($_GET['dh'])) {
+    $dh = $_GET['dh'];
+}
 
 include "../admin/backend/koneksi.php";
 
@@ -52,7 +53,7 @@ include "../admin/backend/koneksi.php";
             </svg>
         </button>
     </header>
-    <!-- <div style="background-color: #166534; height: 394.031px; width: 730px; top: 62%; left: 68%; border-radius: 30px; position: absolute; transform: translate(-50%, -50%); z-index: -1;"></div> -->
+
     <section id="Description">
         <main class="gap-2" style="box-sizing: border-box;">
             <h2 class="col-span-3 ml-20 text-2xl text-700 mb-10 font-bold mt-28">Description <span class="text-[#FF902A]">Hotel</span></h2>
@@ -62,7 +63,7 @@ include "../admin/backend/koneksi.php";
                     <div class="ml-10 p-10 bg-[#166534] rounded-3xl">
                         <h2 class="mb-5 text-2xl font-bold"><?php echo $nh; ?></h2>
                         <h3 class="font-semibold mb-3">Location : <?php echo $lh ?></h3>
-                        <p class="w-6/" style="box-sizing: border-box;"> Hotel ini adalah sebuah tempat yang luar biasa untuk menginap. Dengan fasilitas yang lengkap dan pelayanan yang memuaskan, hotel ini menjadi pilihan utama bagi para wisatawan.</p>
+                        <p class="w-6/" style="box-sizing: border-box;"> <?php echo $dh ?></p>
                     </div>
                     <div class="absolute left-[2%] top-[100%] p-10 ml-6 mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1">
                         <h2 class="mb-2 text-xl font-bold">Facilities</h2>

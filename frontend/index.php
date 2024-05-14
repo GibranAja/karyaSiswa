@@ -3,7 +3,7 @@ session_start();
 
 include "../admin/backend/koneksi.php";
 
-$query = "SELECT namahotel, gambar_hotel, lokasi FROM tblhotel";
+$query = "SELECT namahotel, gambar_hotel, deskripsihotel, lokasi FROM tblhotel";
 $hotel1 = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($hotel1);
 $row2 = mysqli_fetch_assoc($hotel1);
@@ -87,7 +87,7 @@ mysqli_close($con);
             <p class="text-white mb-4 md:mb-5"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis qui natus </p>
             <div class="flex items-center gap-4 flex-wrap">
               <button class="bg-[#939B62] text-white px-6 md:px-8 py-2 rounded-full flex items-center gap-1.5 mb-2 md:mb-0">
-                <span> Order Now </span>
+                <span> Look Hotels Now </span>
               </button>
               <button class="px-6 md:px-8 py-2 text-[#ff710a] hover:text-[#ff920a] font-extrabold duration-200 transition-all mb-2 md:mb-0">More menu</button>
             </div>
@@ -127,7 +127,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row['namahotel'] ?>&gh=<?php echo $row['gambar_hotel'] ?>&lh=<?php echo $row['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row['namahotel'] ?>&gh=<?php echo $row['gambar_hotel'] ?>&lh=<?php echo $row['lokasi'] ?>&dh=<?php echo $row['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row2['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row2['namahotel'] ?>&gh=<?php echo $row2['gambar_hotel'] ?>&lh=<?php echo $row2['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row2['namahotel'] ?>&gh=<?php echo $row2['gambar_hotel'] ?>&lh=<?php echo $row2['lokasi'] ?>&dh=<?php echo $row2['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -151,7 +151,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row3['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row3['namahotel'] ?>&gh=<?php echo $row3['gambar_hotel'] ?>&lh=<?php echo $row3['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row3['namahotel'] ?>&gh=<?php echo $row3['gambar_hotel'] ?>&lh=<?php echo $row3['lokasi'] ?>&dh=<?php echo $row3['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -163,7 +163,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row4['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row4['namahotel'] ?>&gh=<?php echo $row4['gambar_hotel'] ?>&lh=<?php echo $row4['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row4['namahotel'] ?>&gh=<?php echo $row4['gambar_hotel'] ?>&lh=<?php echo $row4['lokasi'] ?>&dh=<?php echo $row4['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -175,7 +175,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row5['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row5['namahotel'] ?>&gh=<?php echo $row5['gambar_hotel'] ?>&lh=<?php echo $row5['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row5['namahotel'] ?>&gh=<?php echo $row5['gambar_hotel'] ?>&lh=<?php echo $row5['lokasi'] ?>&dh=<?php echo $row5['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -187,7 +187,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row6['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row6['namahotel'] ?>&gh=<?php echo $row6['gambar_hotel'] ?>&lh=<?php echo $row6['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row6['namahotel'] ?>&gh=<?php echo $row6['gambar_hotel'] ?>&lh=<?php echo $row6['lokasi'] ?>&dh=<?php echo $row6['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -199,7 +199,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row7['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row7['namahotel'] ?>&gh=<?php echo $row7['gambar_hotel'] ?>&lh=<?php echo $row7['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row7['namahotel'] ?>&gh=<?php echo $row7['gambar_hotel'] ?>&lh=<?php echo $row7['lokasi'] ?>&dh=<?php echo $row7['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -211,7 +211,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row8['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row8['namahotel'] ?>&gh=<?php echo $row8['gambar_hotel'] ?>&lh=<?php echo $row8['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row8['namahotel'] ?>&gh=<?php echo $row8['gambar_hotel'] ?>&lh=<?php echo $row8['lokasi'] ?>&dh=<?php echo $row8['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
@@ -223,7 +223,7 @@ mysqli_close($con);
             <span class="text-[#374B43] font-bold text-lg "><?php echo $row9['lokasi'] ?></span>
           </div>
           <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row9['gambar_hotel'] ?>&lh=<?php echo $row9['lokasi'] ?>';">Book Now</button>
+            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row9['gambar_hotel'] ?>&lh=<?php echo $row9['lokasi'] ?>&dh=<?php echo $row9['deskripsihotel'] ?>';">Book Now</button>
           </div>
         </div>
       </div>
