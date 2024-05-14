@@ -241,7 +241,7 @@ mysqli_close($con);
             <img src="./asset/MiniHotel.png" class="w-24 h-28 p-3" alt="Kopi 1">
             <div class="text-center">
               <h5 class="text-sm font-bold">Choose your Hotel</h5>
-              <p class="text-sm">There are 20+ hotels for you</p>
+              <p class="text-sm">There are many hotels recommended for you</p>
             </div>
           </div>
         </div>
