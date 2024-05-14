@@ -86,7 +86,7 @@ mysqli_close($con);
             <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-snug"> Enjoy your <span class="text-[#FF920A]">travel</span> comfortably </h2>
             <p class="text-white mb-4 md:mb-5"> Tunggu apalagi, mau mencari hotel yang direkomendasikan? Tinggal klik tombol di bawah ini aja!!</p>
             <div class="flex items-center gap-4 flex-wrap">
-              <button href="#hotel" class="bg-[#939B62] text-white px-6 md:px-8 py-2 rounded-full flex items-center gap-1.5 mb-2 md:mb-0">
+              <button id="hotel-btn" class="bg-[#939B62] text-white px-6 md:px-8 py-2 rounded-full flex items-center gap-1.5 mb-2 md:mb-0">
                 <span> Look Hotels Now </span>
               </button>
             </div>
@@ -119,7 +119,7 @@ mysqli_close($con);
     <h2 class="text-center text-2xl text-700 mb-10 font-bold"><span class="text-[#FF902A]">Recomended</span> for you</h2>
     <div id="cardContainer" class="flex flex-wrap justify-around m-5">
       <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-full" src="<?php echo $row['gambar_hotel']; ?>" alt="Gambar Hotel">
+        <img class="w-[384px] h-[336px]" src="<?php echo $row['gambar_hotel']; ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
             <div class="font-bold text-xl -mb-2"><?php echo $row['namahotel'] ?></div>
@@ -383,6 +383,13 @@ const navMenu = document.querySelector('#nav-menu');
 hamburgerBtn.addEventListener('click', () => {
   navMenu.classList.toggle('hidden');
 });
+
+const hotelBtn = document.getElementById('hotel-btn');
+  const hotelSection = document.getElementById('hotel');
+
+  hotelBtn.addEventListener('click', () => {
+    hotelSection.scrollIntoView({ behavior: 'smooth' });
+  });
   </script>
 </body>
 
