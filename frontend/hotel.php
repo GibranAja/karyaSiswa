@@ -23,6 +23,12 @@ if (isset($_GET['dh'])) {
 
 include "../admin/backend/koneksi.php";
 
+$query = "SELECT * FROM tblroom";
+$hotel1 = mysqli_query($con, $query);
+
+$row = mysqli_fetch_assoc($hotel1);
+$row2 = mysqli_fetch_assoc($hotel1);
+$row3 = mysqli_fetch_assoc($hotel1);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +71,7 @@ include "../admin/backend/koneksi.php";
                 <h3 class="font-semibold mb-3">Location : <?php echo $lh ?></h3>
                 <p class="w-full md:w-6/7"><?php echo $dh ?></p>
                 </div>
-                <div class="p-5 md:p-10 ml-2 md:ml-6 mr-2 md:mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1">
+                <div class="p-5 md:p-10 ml-2 md:ml-6 mr-2 md:mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1 absolute -left-5">
                 <h2 class="mb-2 text-xl font-bold">Facilities</h2>
                 <ul>
                     <li><i class="ai-air mr-2"></i>AC</li>
@@ -85,33 +91,33 @@ include "../admin/backend/koneksi.php";
         <h2 class="text-center text-2xl text-700 mb-10 font-bold"><span class="text-[#FF902A]">Recomended</span> for you</h2>
         <div id="cardContainer" class="flex flex-wrap justify-around m-5">
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-                <img class="w-full" src="./asset/Kamar Reguler.png" alt="Sunset in the mountains">
+                <img class="w-full" src="<?php echo $row['gambar_kamar'] ?>" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
-                        <div class="font-bold text-lg mb-2">Regular Room</div>
-                        <span class="text-[#374B43] font-bold text-md block mb-2.5">Rp.500.000</span>
+                        <div class="font-bold text-lg mb-2"><?php echo $row['tipe_room'] ?></div>
+                        <span class="text-[#374B43] font-bold text-md block mb-2.5"><?php echo $row['harga_permalam'] ?></span>
                     </div>
-                    <p>Bed Type : Single</p>
+                    <p>Bed Type : <?php echo $row['bed_tipe'] ?></p>
                 </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-                <img class="w-[270px] h-[148px]" src="./asset/Kamar Deluxe.jpg" alt="Sunset in the mountains">
+                <img class="w-[270px] h-[148px]" src="<?php echo $row2['gambar_kamar'] ?>" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
-                        <div class="font-bold text-lg mb-2">Deluxe Room</div>
-                        <span class="text-[#374B43] font-bold text-md block mb-2.5">Rp.550.000</span>
+                        <div class="font-bold text-lg mb-2"><?php echo $row2['tipe_room'] ?></div>
+                        <span class="text-[#374B43] font-bold text-md block mb-2.5"><?php echo $row['harga_permalam'] ?></span>
                     </div>
-                    <p>Bed Type : Double</p>
+                    <p>Bed Type : <?php echo $row2['bed_tipe'] ?></p>
                 </div>
             </div>
             <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-                <img class="w-[270px] h-[148px]" src="./asset/Kamar Special.jpg" alt="Sunset in the mountains">
+                <img class="w-[270px] h-[148px]" src="<?php echo $row3['gambar_kamar'] ?>" alt="Sunset in the mountains">
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
-                        <div class="font-bold text-lg mb-2">Special Room</div>
-                        <span class="text-[#374B43] font-bold text-md block mb-2.5">Rp.600.000</span>
+                        <div class="font-bold text-lg mb-2"><?php echo $row3['tipe_room'] ?></div>
+                        <span class="text-[#374B43] font-bold text-md block mb-2.5"><?php echo $row['harga_permalam'] ?></span>
                     </div>
-                    <p>Bed Type : King</p>
+                    <p>Bed Type : <?php echo $row3['bed_tipe'] ?></p>
                 </div>
             </div>
         </div>
