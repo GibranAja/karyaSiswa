@@ -182,13 +182,13 @@ $row3 = mysqli_fetch_assoc($hotel1);
       <div class="w-full md:w-1/4 mb-8 md:mb-0 flex flex-col md:flex-row justify-center items-center">
         <h3 class="text-xl font-bold mb-4 md:mb-0 md:mr-12">Hubungi Kami</h3>
         <ul class="text-sm flex flex-col md:flex-row">
-          <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-envelope mr-2"></i>Email</a></li>
-          <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-phone mr-2"></i>Telepon</a></li>
+          <li><a href="mailto:mgibranarraffi@gmail.com" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-envelope mr-2"></i>Email</a></li>
+          <li><a href="tel+629539298828" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-phone mr-2"></i>Telepon</a></li>
         </ul>
       </div>
       <div class="w-full md:w-1/4 mb-8 md:mb-0">
         <h3 class="text-xl font-bold text-[#FF920A] text-center mb-2">PROMO!!!</h3>
-        <p class="text-sm mb-4">Dapatkan berita terbaru dan promo menarik dari kami dengan mendaftar newsletter.</p>
+        <p class="text-sm mb-4">Dapatkan berita terbaru dan promo menarik dari kami dengan mendaftar member.</p>
         <form>
           <input type="email" class="bg-gray-700 text-white p-2 rounded w-full mb-2" placeholder="Masukkan email Anda">
           <button type="submit" class="bg-blue-600 text-white p-2 rounded w-full">Daftar</button>
@@ -196,7 +196,7 @@ $row3 = mysqli_fetch_assoc($hotel1);
       </div>
     </div>
     <div class="mt-8 text-center text-sm">
-      <p>© 2024 | Punya Gibran.</p>
+      <p>© 2024 | Gibran.</p>
     </div>
   </footer>
 
