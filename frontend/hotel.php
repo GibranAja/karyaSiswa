@@ -174,6 +174,32 @@ $row3 = mysqli_fetch_assoc($hotel1);
         </form>
     </section>
 
+    <footer class="bg-gray-800 text-white p-4 mt-10">
+    <div class="container mx-auto flex flex-wrap justify-between items-center">
+      <div class="w-full md:w-1/4 mb-8 md:mb-0">
+        <h2 class="text-4xl font-bold mx-auto text-center md:mx-0 md:text-center"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></h2>
+      </div>
+      <div class="w-full md:w-1/4 mb-8 md:mb-0 flex flex-col md:flex-row justify-center items-center">
+        <h3 class="text-xl font-bold mb-4 md:mb-0 md:mr-12">Hubungi Kami</h3>
+        <ul class="text-sm flex flex-col md:flex-row">
+          <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-envelope mr-2"></i>Email</a></li>
+          <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-phone mr-2"></i>Telepon</a></li>
+        </ul>
+      </div>
+      <div class="w-full md:w-1/4 mb-8 md:mb-0">
+        <h3 class="text-xl font-bold text-[#FF920A] text-center mb-2">PROMO!!!</h3>
+        <p class="text-sm mb-4">Dapatkan berita terbaru dan promo menarik dari kami dengan mendaftar newsletter.</p>
+        <form>
+          <input type="email" class="bg-gray-700 text-white p-2 rounded w-full mb-2" placeholder="Masukkan email Anda">
+          <button type="submit" class="bg-blue-600 text-white p-2 rounded w-full">Daftar</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-sm">
+      <p>© 2024 | Punya Gibran.</p>
+    </div>
+  </footer>
+
     <script>
         // Ini Buat Checkin
         var today = new Date();
