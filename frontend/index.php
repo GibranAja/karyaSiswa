@@ -50,17 +50,12 @@ mysqli_close($con);
 </head>
 
 <body style="scroll-behavior: smooth;" class="bg-[#f0f0f0]">
-  <header id="navbar" class="bg-green-800 text-white px-4 md:px-32 py-5 flex items-center justify-between fixed top-0 w-full z-20"> <!-- Menambahkan z-index yang lebih tinggi pada header -->
+<header id="navbar" class="bg-green-800 text-white px-4 md:px-32 py-5 flex items-center justify-between fixed top-0 w-full z-20">
     <a href="#" class="text-2xl md:text-4xl font-bold mr-4 md:mr-10">
       <p class="text-[#FFB000]">Hai<span class="text-[#F5F5DC]">loka</span></p>
     </a>
-    <button class="md:hidden" id="hamburger-btn">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
     <nav id="nav-menu" class="text-white md:flex md:items-center md:justify-center hidden">
-      <ul class="md:flex md:space-x-4 mr-0 md:mr-24 flex flex-col items-center md:flex-row">
+      <ul class="md:flex md:space-x-4 mr-0 md:mr-24 flex items-center md:flex-row">
         <li class="mb-2 md:mb-0">
           <a href="#Home" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Home</a>
         </li>
@@ -72,7 +67,12 @@ mysqli_close($con);
         </li>
       </ul>
     </nav>
-  </header>
+    <button class="md:hidden" id="hamburger-btn">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+</header>
 
   <!-- Home Section -->
   <section id="Home" class="pt-24 md:pt-32">
@@ -278,8 +278,6 @@ mysqli_close($con);
         <ul class="text-sm flex flex-col md:flex-row">
           <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-envelope mr-2"></i>Email</a></li>
           <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-solid fa-phone mr-2"></i>Telepon</a></li>
-          <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0 md:mr-4"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp</a></li>
-          <li><a href="#" class="hover:underline flex items-center mb-2 md:mb-0"><i class="fa-brands fa-instagram mr-2"></i>Instagram</a></li>
         </ul>
       </div>
       <div class="w-full md:w-1/4 mb-8 md:mb-0">
@@ -376,13 +374,33 @@ mysqli_close($con);
       });
     });
 
-    
-const hamburgerBtn = document.querySelector('#hamburger-btn');
-const navMenu = document.querySelector('#nav-menu');
 
-hamburgerBtn.addEventListener('click', () => {
-  navMenu.classList.toggle('hidden');
+    document.addEventListener('DOMContentLoaded', function() {
+  var hamburgerBtn = document.getElementById('hamburger-btn');
+  var navMenu = document.getElementById('nav-menu');
+
+  hamburgerBtn.addEventListener('click', function() {
+    // Toggle class 'open' on hamburger button
+    hamburgerBtn.classList.toggle('open');
+
+    // Check if 'open' class is present, then change SVG to 'X' or hamburger menu
+    if (hamburgerBtn.classList.contains('open')) {
+      hamburgerBtn.innerHTML = `
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>`;
+    } else {
+      hamburgerBtn.innerHTML = `
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>`;
+    }
+
+    // Toggle display of navigation menu
+    navMenu.classList.toggle('hidden');
+  });
 });
+
 
 const hotelBtn = document.getElementById('hotel-btn');
   const hotelSection = document.getElementById('hotel');

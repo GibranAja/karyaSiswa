@@ -44,21 +44,29 @@ $row3 = mysqli_fetch_assoc($hotel1);
 </head>
 
 <body class="scroll-behavior">
-    <header id="navbar" class="bg-green-800 text-white px-32 py-5 flex items-center justify-between fixed top-0 w-full z-10">
-    <a href="../frontend/index.php" class="text-4xl font-bold mr-1"><span class="text-[#FFB000]">Hai</span><span class="text-[#F5F5DC]">loka</span></a>
-    <nav class="text-white md:flex md:items-center md:justify-center hidden" id="nav-menu">
-        <ul class="md:flex md:space-x-4 mr-24">
-        <li><a href="#Description" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Description</a></li>
-        <li><a href="#room" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Rooms</a></li>
-        <li><a href="#booking" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Booking</a></li>
-        </ul>
-    </nav>
-    <button class="md:hidden" id="hamburger-btn">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-    </button>
-    </header>
+<header id="navbar" class="bg-green-800 text-white px-4 md:px-32 py-5 flex items-center justify-between fixed top-0 w-full z-10">
+  <a href="../frontend/index.php" class="text-2xl md:text-4xl font-bold mr-4 md:mr-10">
+    <p class="text-[#FFB000]">Hai<span class="text-[#F5F5DC]">loka</span></p>
+  </a>
+  <nav class="text-white sm:flex md:items-center md:justify-center hidden" id="nav-menu">
+    <ul class="sm:flex md:space-x-4 mr-0 md:mr-24 flex items-center sm:flex-row">
+      <li class="mb-2 md:mb-0">
+        <a href="#Description" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Description</a>
+      </li>
+      <li class="mb-2 md:mb-0">
+        <a href="#room" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Rooms</a>
+      </li>
+      <li class="mb-2 md:mb-0">
+        <a href="#booking" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Booking</a>
+      </li>
+    </ul>
+  </nav>
+  <button class="md:hidden" id="hamburger-btn">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+</header>
 
     <section id="Description" class="px-4 py-8 md:px-8 lg:px-16">
         <main class="gap-2">
@@ -71,7 +79,7 @@ $row3 = mysqli_fetch_assoc($hotel1);
                 <h3 class="font-semibold mb-3">Location : <?php echo $lh ?></h3>
                 <p class="w-full md:w-6/7"><?php echo $dh ?></p>
                 </div>
-                <div class="p-5 md:p-10 ml-2 md:ml-6 mr-2 md:mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1 absolute -left-5">
+                <div class="p-5 md:p-10 ml-2 md:ml-6 mr-2 md:mr-32 bg-green-800 rounded-3xl inline-block text-white mt-3 col-span-1 md:absolute md:-left-5">
                 <h2 class="mb-2 text-xl font-bold">Facilities</h2>
                 <ul>
                     <li><i class="ai-air mr-2"></i>AC</li>
@@ -105,7 +113,7 @@ $row3 = mysqli_fetch_assoc($hotel1);
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
                         <div class="font-bold text-lg mb-2"><?php echo $row2['tipe_room'] ?></div>
-                        <span class="text-[#374B43] font-bold text-md block mb-2.5"><?php echo $row['harga_permalam'] ?></span>
+                        <span class="text-[#374B43] font-bold text-md block mb-2.5"><?php echo $row2['harga_permalam'] ?></span>
                     </div>
                     <p>Bed Type : <?php echo $row2['bed_tipe'] ?></p>
                 </div>
@@ -115,7 +123,7 @@ $row3 = mysqli_fetch_assoc($hotel1);
                 <div class="px-6 py-4">
                     <div class="flex justify-between items-end">
                         <div class="font-bold text-lg mb-2"><?php echo $row3['tipe_room'] ?></div>
-                        <span class="text-[#374B43] font-bold text-md block mb-2.5"><?php echo $row['harga_permalam'] ?></span>
+                        <span class="text-[#374B43] font-bold text-md block mb-2.5"><?php echo $row3['harga_permalam'] ?></span>
                     </div>
                     <p>Bed Type : <?php echo $row3['bed_tipe'] ?></p>
                 </div>
@@ -126,7 +134,7 @@ $row3 = mysqli_fetch_assoc($hotel1);
     <section id="booking">
         <form action="../admin/backend/form.php" method="post">
             <div class="bg-white p-10">
-                <h1 class="font-bold text-2xl ml-96 mb-10"><i class="fa-solid fa-ticket mr-5"></i>Booking</h1>
+                <h1 class="font-bold text-2xl text-center md:text-center md:flex md:justify-center md:items-center mb-10 flex items-center"><i class="fa-solid fa-ticket mr-5"></i>Booking</h1>
                 <div class="bg-white p-12 rounded-2xl shadow-2xl max-w-md mx-auto">
                     <h2 class="text-[#88AD6A] font-bold text-lg mb-10"><i class="fa-solid fa-eye mr-2.5"></i>Recently Viewed Hotels</h2>
 
@@ -226,13 +234,31 @@ $row3 = mysqli_fetch_assoc($hotel1);
         });
 
         
-        const hamburgerBtn = document.querySelector('#hamburger-btn');
-        const navMenu = document.querySelector('#nav-menu');
+        document.addEventListener('DOMContentLoaded', function() {
+  var hamburgerBtn = document.getElementById('hamburger-btn');
+  var navMenu = document.getElementById('nav-menu');
 
+  hamburgerBtn.addEventListener('click', function() {
+    // Toggle class 'open' on hamburger button
+    hamburgerBtn.classList.toggle('open');
 
-        hamburgerBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('hidden');
-        });
+    // Check if 'open' class is present, then change SVG to 'X' or hamburger menu
+    if (hamburgerBtn.classList.contains('open')) {
+      hamburgerBtn.innerHTML = `
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>`;
+    } else {
+      hamburgerBtn.innerHTML = `
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>`;
+    }
+
+    // Toggle display of navigation menu
+    navMenu.classList.toggle('hidden');
+  });
+});
     </script>
 
 </body>

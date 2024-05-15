@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2024 at 08:00 PM
+-- Generation Time: May 15, 2024 at 03:50 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -89,9 +89,9 @@ CREATE TABLE `tblroom` (
 --
 
 INSERT INTO `tblroom` (`id`, `tipe_room`, `bed_tipe`, `harga_permalam`, `gambar_kamar`) VALUES
-(27, 'Regular Room', 'Single', 500000, './asset/Kamar Reguler.png'),
-(28, 'Deluxe Room', 'Double', 550000, './asset/Kamar Deluxe.jpg'),
-(29, 'Special Room', 'King', 700000, './asset/Kamar Special.jpg');
+(27, 'Regular Room', 'Single', 550000, './asset/Kamar Reguler.png'),
+(28, 'Deluxe Room', 'Double', 650000, './asset/Kamar Deluxe.jpg'),
+(29, 'Special Room', 'King', 800000, './asset/Kamar Special.jpg');
 
 -- --------------------------------------------------------
 
