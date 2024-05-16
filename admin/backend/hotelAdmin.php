@@ -60,7 +60,7 @@ if (isset($_POST['editUser'])) {
 <body class="bg-gray-100">
 
     <main class="ml-64 p-10">
-        <h1 class="text-2xl font-bold mb-5">Rooms</h1>
+        <h1 class="text-2xl font-bold mb-5">Hotels</h1>
 
         <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Room</button>
 
