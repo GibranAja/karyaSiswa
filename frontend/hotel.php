@@ -40,7 +40,7 @@ $row3 = mysqli_fetch_assoc($hotel1);
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/akar-icons-fonts"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <title>Document</title>
+    <title><?php echo $nh ?></title>
 </head>
 
 <body class="scroll-behavior">
@@ -143,6 +143,9 @@ $row3 = mysqli_fetch_assoc($hotel1);
 
                     <label class="block text-sm font-medium text-gray-700">Hotel :</label>
                     <input type="text" name="namahotel" value="<?php echo $nh; ?>" class="mt-1 p-2 w-full border rounded mb-4" readonly>
+
+                    <label class="block text-sm font-medium text-gray-700">Lokasi :</label>
+                    <input type="text" name="namahotel" value="<?php echo $lh; ?>" class="mt-1 p-2 w-full border rounded mb-4" readonly>
 
                     <label class="block text-sm font-medium text-gray-700">Phone Number :</label>
                     <input type="number" name="phone" class="mt-1 p-2 w-full border rounded mb-4">

@@ -1,40 +1,29 @@
 <?php
-session_start();
-$nh = "";
-if (isset($_GET['nh'])) {
-    $nh = $_GET['nh'];
-} elseif (isset($_SESSION['nh'])) {
-    $nh = $_SESSION['nh'];
-}
 
 include "./koneksi.php";
 include "./sidebar.php";
 
-// buat new user
-if (isset($_POST['submitan'])) {
-    $name = $_POST['name'];
-    $phone = $_POST['phone'];
-    $room_type = $_POST['room_type'];
-    $checkin = $_POST['checkin'];
-    $checkout = $_POST['checkout'];
+if (isset($_POST['submit_room'])) {
+    $tipe_room = $_POST['tipe_room'];
+    $bed_tipe = $_POST['bed_type'];
+    $harga = $_POST['harga'];
+    $gambarHotel = $_POST['gambar_hotel'];
 
-    $insert_sql = "INSERT INTO tbluser (nama, phone, tipe_room, checkin, checkout)
-    VALUES ('$name', '$phone', '$room_type', '$checkin', '$checkout')";
+    $insert_sql = "INSERT INTO tblroom (tipe_room, bed_tipe, harga_permalam, gambar_hotel)
+    VALUES ('$tipe_room', '$bed_tipe', '$harga', '$gambarHotel')";
     mysqli_query($con, $insert_sql);
 
-    // Redirect to avoid form resubmission
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
 
-// buat delete user
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
-    $userId = $_POST['userId'];
+    $roomId = $_POST['userId'];
 
-    $sql = "DELETE FROM tbluser WHERE id = $userId";
+    $sql = "DELETE FROM tblhotel WHERE id = $roomId";
 
     if ($con->query($sql) === TRUE) {
-        header("Location: bookingAdmin.php");
+        header("Location: hotelAdmin.php");
         exit();
     } else {
         echo "Error deleting user: " . $con->error;
@@ -43,18 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['userId'])) {
     $con->close();
 }
 
-// buat edit user
 if (isset($_POST['editUser'])) {
     $editUserId = $_POST['editUserId'];
     $editName = $_POST['editName'];
     $editPhone = $_POST['editPhone'];
-    $editRoomType = $_POST['editRoomType'];
-    $editCheckin = $_POST['editCheckin'];
-    $editCheckout = $_POST['editCheckout'];
 
-    $update_sql = "UPDATE tbluser SET nama='$editName', phone='$editPhone', tipe_room='$editRoomType', checkin='$editCheckin', checkout='$editCheckout' WHERE id=$editUserId";
+    $update_sql = "UPDATE tblhotel SET namahotel='$editName', lokasi='$editPhone' WHERE id=$editUserId";
     if ($con->query($update_sql) === TRUE) {
-        header("Location: bookingAdmin.php");
+        header("Location: hotelAdmin.php");
         exit();
     } else {
         echo "Error updating user: " . $con->error;
@@ -68,34 +53,33 @@ if (isset($_POST['editUser'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
 </head>
 
-<body class="bg-gray-100 font-poppins">
+<body class="bg-gray-100">
+
     <main class="ml-64 p-10">
-        <h1 class="text-2xl font-bold mb-5">Booking</h1>
-        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Booking User</button>
+        <h1 class="text-2xl font-bold mb-5">Rooms</h1>
+
+        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Room</button>
+
         <table class="w-full bg-white shadow-md rounded my-6">
             <thead>
                 <tr class="border-b">
                     <th class="text-left p-3 px-5">ID</th>
-                    <th class="text-left p-3 px-5">Name</th>
-                    <th class="text-left p-3 px-5">Phone</th>
-                    <th class="text-left p-3 px-5">Hotel</th>
                     <th class="text-left p-3 px-5">Tipe Kamar</th>
-                    <th class="text-left p-3 px-5">Check-in</th>
-                    <th class="text-left p-3 px-5">Check-Out</th>
+                    <th class="text-left p-3 px-5">Bed Type</th>
+                    <!-- <th class="text-left p-3 px-5">Harga per Malam</th> -->
                     <th class="text-left p-3 px-5">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- PHP code to fetch and display users from database -->
                 <?php
                 include "./koneksi.php";
 
-                $results_per_page = 5; // Jumlah baris yang ditampilkan per halaman
-                $sql = "SELECT * FROM tbluser";
+                $results_per_page = 5;
+                $sql = "SELECT * FROM tblhotel";
                 $result = $con->query($sql);
                 $number_of_results = mysqli_num_rows($result);
                 $number_of_pages = ceil($number_of_results / $results_per_page);
@@ -108,7 +92,7 @@ if (isset($_POST['editUser'])) {
 
                 $this_page_first_result = ($page - 1) * $results_per_page;
 
-                $sql = "SELECT * FROM tbluser LIMIT " . $this_page_first_result . ',' .  $results_per_page;
+                $sql = "SELECT * FROM tblhotel LIMIT " . $this_page_first_result . ',' .  $results_per_page;
                 $result = $con->query($sql);
                 $id = 1 + $this_page_first_result;
 
@@ -116,15 +100,12 @@ if (isset($_POST['editUser'])) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td class='p-3 px-5'>" . $id++ . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['nama'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['phone'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['namahotel'] . "</td>"; // Menampilkan nilai $nh pada kolom "Hotel"
-                        echo "<td class='p-3 px-5'>" . $row['tipe_room'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['checkin'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['checkout'] . "</td>";
+                        echo "<td class='p-3 px-5'>" . $row['namahotel'] . "</td>";
+                        echo "<td class='p-3 px-5'>" . $row['lokasi'] . "</td>";
+                        // echo "<td class='p-3 px-5'>" . $row['harga_permalam'] . "</td>";
                         echo "<td class='p-3 px-5'>";
-                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['nama'] . "', '" . $row['phone'] . "', '" . $row['tipe_room'] . "', '" . $row['checkin'] . "', '" . $row['checkout'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded mr-2'>Edit</button>";
-                        echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['nama'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded'>Delete</button>";
+                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['namahotel'] . "', '" . $row['lokasi'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded mr-2'>Edit</button>";
+                        echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['namahotel'] . "', '" . $row['lokasi'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded'>Delete</button>";
                         echo "</td>";
                         echo "</tr>";
                     }
@@ -136,25 +117,27 @@ if (isset($_POST['editUser'])) {
                 ?>
             </tbody>
         </table>
+
+        <!-- Pagination -->
         <div class="flex justify-center mt-5">
             <?php
             if ($page > 1) {
-                echo '<a href="bookingAdmin.php?page=' . ($page - 1) . '" class="mx-1 px-3 py-2 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-md">Prev</a>';
+                echo '<a href="hotelAdmin.php?page=' . ($page - 1) . '" class="mx-1 px-3 py-2 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-md">Prev</a>';
             }
 
             for ($i = max(1, $page - 2); $i <= min($number_of_pages, $page + 2); $i++) {
                 $activeClass = ($i == $page) ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400';
-                echo '<a href="bookingAdmin.php?page=' . $i . '" class="mx-1 px-3 py-2 ' . $activeClass . ' rounded-md">' . $i . '</a>';
+                echo '<a href="hotelAdmin.php?page=' . $i . '" class="mx-1 px-3 py-2 ' . $activeClass . ' rounded-md">' . $i . '</a>';
             }
 
             if ($page < $number_of_pages) {
-                echo '<a href="bookingAdmin.php?page=' . ($page + 1) . '" class="mx-1 px-3 py-2 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-md">Next</a>';
+                echo '<a href="hotelAdmin.php?page=' . ($page + 1) . '" class="mx-1 px-3 py-2 bg-gray-300 text-gray-700 hover:bg-gray-400 rounded-md">Next</a>';
             }
             ?>
         </div>
     </main>
 
-    <!-- Modal buat Add User -->
+    <!-- Modal for adding new user -->
     <div id="editUserModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen">
             <div class="modal-content bg-white p-8 w-96 mx-auto rounded shadow-lg">
@@ -168,24 +151,11 @@ if (isset($_POST['editUser'])) {
                 </div>
                 <form action="" method="post">
                     <input type="hidden" name="editUserId" id="editUserId">
-                    <label for="editName" class="block mb-2">Name:</label>
+                    <label for="editName" class="block mb-2">Name Hotel:</label>
                     <input type="text" name="editName" id="editName" class="w-full border border-gray-300 rounded-md mb-4" required>
 
-                    <label for="editPhone" class="block mb-2">Phone:</label>
+                    <label for="editPhone" class="block mb-2">Location:</label>
                     <input type="tel" name="editPhone" id="editPhone" class="w-full border border-gray-300 rounded-md mb-4" required>
-
-                    <label for="editRoomType" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-city mr-2.5"></i>Room Type:</label>
-                    <select id="editRoomType" name="editRoomType" class="mt-1 p-2 w-full border rounded mb-4">
-                        <option value="Regular">Regular Room</option>
-                        <option value="Deluxe">Deluxe Room</option>
-                        <option value="Special">Special Room</option>
-                    </select>
-
-                    <label for="editCheckin" class="block text-sm font-medium text-gray-700"><i class="fa-solid fa-calendar mr-5"></i>Check-in</label>
-                    <input type='date' id='editCheckin' name='editCheckin' class='w-full border border-gray-300 rounded-md mb-4'>
-
-                    <label for='editCheckout' class='block text-sm font-medium text-gray-700'><i class="fa-solid fa-calendar mr-5"></i>Check-out</label>
-                    <input type='date' id='editCheckout' name='editCheckout' class='w-full border border-gray-300 rounded-md mb-4'>
 
                     <button type="submit" name="editUser" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Save Changes</button>
                 </form>
@@ -193,7 +163,7 @@ if (isset($_POST['editUser'])) {
         </div>
     </div>
 
-    <!-- Delete Modal -->
+    <!-- Delete Confirmation Modal -->
     <div id="deleteUserModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen">
             <div class="modal-content bg-white p-8 w-96 mx-auto rounded shadow-lg">
@@ -224,7 +194,7 @@ if (isset($_POST['editUser'])) {
         </div>
     </div>
 
-    <!-- JavaScript for opening and closing modal -->
+    <!-- Javascript start -->
     <script>
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
@@ -238,13 +208,10 @@ if (isset($_POST['editUser'])) {
             document.getElementById(modalId).classList.add('hidden');
         }
 
-        function openEditModal(id, name, phone, roomType, checkin, checkout) {
+        function openEditModal(id, name, phone) {
             document.getElementById('editUserId').value = id;
             document.getElementById('editName').value = name;
             document.getElementById('editPhone').value = phone;
-            document.getElementById('editRoomType').value = roomType;
-            document.getElementById('editCheckin').value = checkin;
-            document.getElementById('editCheckout').value = checkout;
             openModal('editUserModal');
         }
 
@@ -254,6 +221,7 @@ if (isset($_POST['editUser'])) {
             openModal('deleteUserModal');
         }
     </script>
+
 </body>
 
 </html>
