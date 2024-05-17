@@ -143,7 +143,7 @@ if (isset($_POST['editUser'])) {
             }
 
             for ($i = max(1, $page - 2); $i <= min($number_of_pages, $page + 2); $i++) {
-                $activeClass = ($i == $page) ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400';
+                $activeClass = ($i == $page) ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400';
                 echo '<a href="bookingAdmin.php?page=' . $i . '" class="mx-1 px-3 py-2 ' . $activeClass . ' rounded-md">' . $i . '</a>';
             }
 
