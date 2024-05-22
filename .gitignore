@@ -1,2 +1,6 @@
 # Direktori node_modules
 node_modules/
+
+# File konfigurasi npm
+package-lock.json
+package.json
