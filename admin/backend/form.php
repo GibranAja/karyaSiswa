@@ -6,12 +6,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $phone = $_POST['phone'];
     $hotel = $_POST['namahotel'];
+    $lokasi = $_POST['lokasi'];
     $room_type = $_POST['room_type'];
     $checkin = $_POST['checkin'];
     $checkout = $_POST['checkout'];
 
-    $sql = "INSERT INTO tbluser (nama, phone, namahotel, tipe_room, checkin, checkout)
-    VALUES ('$name', '$phone', '$hotel', '$room_type', '$checkin', '$checkout')";
+    $sql = "INSERT INTO tbluser (nama, phone, namahotel, lokasi, tipe_room, checkin, checkout)
+    VALUES ('$name', '$phone', '$hotel', '$lokasi', '$room_type', '$checkin', '$checkout')";
 
     if ($con->query($sql) === TRUE) {
         header("Location: ./bookingSucces.html");

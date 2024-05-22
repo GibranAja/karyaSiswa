@@ -145,7 +145,7 @@ $row3 = mysqli_fetch_assoc($hotel1);
                     <input type="text" name="namahotel" value="<?php echo $nh; ?>" class="mt-1 p-2 w-full border rounded mb-4" readonly>
 
                     <label class="block text-sm font-medium text-gray-700">Lokasi :</label>
-                    <input type="text" name="namahotel" value="<?php echo $lh; ?>" class="mt-1 p-2 w-full border rounded mb-4" readonly>
+                    <input type="text" name="lokasi" value="<?php echo $lh; ?>" class="mt-1 p-2 w-full border rounded mb-4" readonly>
 
                     <label class="block text-sm font-medium text-gray-700">Phone Number :</label>
                     <input type="number" name="phone" class="mt-1 p-2 w-full border rounded mb-4">

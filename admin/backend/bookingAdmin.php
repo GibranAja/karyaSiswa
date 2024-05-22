@@ -7,6 +7,13 @@ if (isset($_GET['nh'])) {
     $nh = $_SESSION['nh'];
 }
 
+$lh = "";
+if (isset($_GET['lh'])) {
+    $nh = $_GET['lh'];
+} elseif (isset($_SESSION['lh'])) {
+    $nh = $_SESSION['lh'];
+}
+
 include "./koneksi.php";
 include "./sidebar.php";
 
@@ -83,6 +90,7 @@ if (isset($_POST['editUser'])) {
                     <th class="text-left p-3 px-5">Name</th>
                     <th class="text-left p-3 px-5">Phone</th>
                     <th class="text-left p-3 px-5">Hotel</th>
+                    <th class="text-left p-3 px-5">Lokasi</th>
                     <th class="text-left p-3 px-5">Tipe Kamar</th>
                     <th class="text-left p-3 px-5">Check-in</th>
                     <th class="text-left p-3 px-5">Check-Out</th>
@@ -118,7 +126,8 @@ if (isset($_POST['editUser'])) {
                         echo "<td class='p-3 px-5'>" . $id++ . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['nama'] . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['phone'] . "</td>";
-                        echo "<td class='p-3 px-5'>" . $row['namahotel'] . "</td>"; // Menampilkan nilai $nh pada kolom "Hotel"
+                        echo "<td class='p-3 px-5'>" . $row['namahotel'] . "</td>";
+                        echo "<td class='p-3 px-5'>" . $row['lokasi'] . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['tipe_room'] . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['checkin'] . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['checkout'] . "</td>";
