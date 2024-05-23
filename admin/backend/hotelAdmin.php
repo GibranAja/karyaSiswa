@@ -62,14 +62,14 @@ if (isset($_POST['editUser'])) {
     <main class="ml-64 p-10">
         <h1 class="text-2xl font-bold mb-5">Hotels</h1>
 
-        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Room</button>
+        <button onclick="openModal('addUserModal')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mb-5">Add Hotel</button>
 
         <table class="w-full bg-white shadow-md rounded my-6">
             <thead>
                 <tr class="border-b">
                     <th class="text-left p-3 px-5">ID</th>
-                    <th class="text-left p-3 px-5">Tipe Kamar</th>
-                    <th class="text-left p-3 px-5">Bed Type</th>
+                    <th class="text-left p-3 px-5">Nama Hotel</th>
+                    <th class="text-left p-3 px-5">Lokasi</th>
                     <!-- <th class="text-left p-3 px-5">Harga per Malam</th> -->
                     <th class="text-left p-3 px-5">Action</th>
                 </tr>

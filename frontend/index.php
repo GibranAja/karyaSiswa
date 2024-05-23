@@ -76,13 +76,13 @@ mysqli_close($con);
 </header>
 
   <!-- Home Section -->
-  <section id="Home" class="pt-24 md:pt-32">
+  <section id="Home" class="pt-24 md:pt-12">
     <main class="container mx-auto px-4 md:px-20">
       <section class="flex flex-col md:flex-row justify-between items-center min-h-screen">
         <div class="absolute top-0 right-0 w-1/2 md:w-96 order-last md:order-none md:-mt-32">
           <img src="./assets/Images/bg-hero.png" alt="" class="w-full">
         </div>
-        <div data-aos="fade-right" class="bg-green-700 p-6 md:p-10 rounded-3xl md:mb-0 mb-8">
+        <div data-aos="fade-right" data-aos-duration="2000" class="bg-green-700 p-6 md:p-10 rounded-3xl md:mb-0 mb-8">
           <div class="w-full md:w-96">
             <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6 leading-snug"> Enjoy your <span class="text-[#FF920A]">travel</span> comfortably </h2>
             <p class="text-white mb-4 md:mb-5"> Tunggu apalagi, mau mencari hotel yang direkomendasikan? Tinggal klik tombol di bawah ini aja!!</p>
@@ -95,17 +95,17 @@ mysqli_close($con);
         </div>
         <div class="relative md:order-last order-first">
           <div>
-            <div class="w-72 md:w-96 rounded-full h-72 md:h-96 flex justify-center items-center mx-auto">
+            <div data-aos="fade-left" data-aos-duration="2000" class="w-72 md:w-96 rounded-full h-72 md:h-96 flex justify-center items-center mx-auto">
               <img src="./asset/Hotel-1.png" alt="" class="w-72 md:w-96 h-72 md:h-96 rounded-full">
             </div>
           </div>
-          <div class="bg-white/10 w-max p-1.5 rounded-full absolute top-4 md:top-6 left-4 md:left-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-5">
+          <div data-aos="fade-up" data-aos-duration="2000" class="bg-white/10 w-max p-1.5 rounded-full absolute top-4 md:top-6 left-4 md:left-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-5">
             <p class="bg-[#939B62] text-white px-6 md:px-8 py-2 w-max rounded-full text-base md:text-xl font-medium">Luxury</p>
           </div>
-          <div class="bg-white/10 w-max p-1.5 rounded-full absolute bottom-2 md:bottom-4 left-4 md:left-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-5">
+          <div data-aos="fade-up" data-aos-duration="2000" class="bg-white/10 w-max p-1.5 rounded-full absolute bottom-2 md:bottom-4 left-4 md:left-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-5">
             <p class="bg-[#939B62] text-white px-6 md:px-8 py-2 w-max rounded-full text-base md:text-xl font-medium">Comfortable</p>
           </div>
-          <div class="bg-white/10 w-max p-1.5 rounded-full absolute top-16 md:top-20 -right-2 md:-right-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-5">
+          <div data-aos="fade-up" data-aos-duration="2000" class="bg-white/10 w-max p-1.5 rounded-full absolute top-16 md:top-20 -right-2 md:-right-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-5">
             <p class="bg-[#939B62] text-white px-6 md:px-8 py-2 w-max rounded-full text-base md:text-xl font-medium">
               <i class="fa-solid fa-star" style="color: #ffc82c;"></i>&nbsp;5
             </p>
@@ -117,9 +117,9 @@ mysqli_close($con);
 
   <!-- Hotel Section -->
   <section id="hotel">
-    <h2 class="text-center text-2xl text-700 mb-10 font-bold"><span class="text-[#FF902A]">Recomended</span> for you</h2>
+    <h2 data-aos="fade-down" data-aos-duration="2000" class="text-center text-2xl text-700 mb-10 font-bold"><span class="text-[#FF902A]">Recomended</span> for you</h2>
     <div id="cardContainer" class="flex flex-wrap justify-around m-5">
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row['gambar_hotel']; ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -131,7 +131,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row2['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -143,7 +143,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row3['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -155,7 +155,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row4['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -167,7 +167,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row5['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -179,7 +179,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row6['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -191,7 +191,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row7['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -203,7 +203,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row8['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -215,7 +215,7 @@ mysqli_close($con);
           </div>
         </div>
       </div>
-      <div class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
         <img class="w-[384px] h-[336px]" src="<?php echo $row9['gambar_hotel'] ?>" alt="Gambar Hotel">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center mb-2">
@@ -235,9 +235,9 @@ mysqli_close($con);
 
   <section class="flex flex-col items-center" id="services">
     <div class="container mx-auto px-4">
-      <h1 class="my-10 text-2xl font-bold">Why should you book using <span class="text-orange-500 font-extrabold">Hailoka</span></h1>
+      <h1 data-aos="fade-right" data-aos-duration="2000" class="my-10 text-2xl font-bold">Why should you book using <span class="text-orange-500 font-extrabold">Hailoka</span></h1>
       <div class="flex flex-wrap -mx-2">
-        <div class="w-full md:w-1/3 px-2">
+        <div data-aos="fade-up" data-aos-duration="2000" class="w-full md:w-1/3 px-2">
           <div class="flex flex-col items-center border-0">
             <img src="./asset/MiniHotel.png" class="w-24 h-28 p-3" alt="Kopi 1">
             <div class="text-center">
@@ -246,7 +246,7 @@ mysqli_close($con);
             </div>
           </div>
         </div>
-        <div class="w-full md:w-1/3 px-2">
+        <div data-aos="fade-up" data-aos-duration="2000" class="w-full md:w-1/3 px-2">
           <div class="flex flex-col items-center border-0">
             <img src="./asset/Hotel Serve.png" class="w-32 h-40 p-3" alt="Kopi 2">
             <div class="text-center">
@@ -255,7 +255,7 @@ mysqli_close($con);
             </div>
           </div>
         </div>
-        <div class="w-full md:w-1/3 px-2">
+        <div data-aos="fade-up" data-aos-duration="2000" class="w-full md:w-1/3 px-2">
           <div class="flex flex-col items-center border-0">
             <img src="./asset/Enjoy Journey.png" class="w-52 h-28 p-3" alt="Kopi 3">
             <div class="text-center">

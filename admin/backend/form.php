@@ -11,6 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkin = $_POST['checkin'];
     $checkout = $_POST['checkout'];
 
+    $phone = "+62" . $phone;
+
     $sql = "INSERT INTO tbluser (nama, phone, namahotel, lokasi, tipe_room, checkin, checkout)
     VALUES ('$name', '$phone', '$hotel', '$lokasi', '$room_type', '$checkin', '$checkout')";
 

@@ -138,7 +138,7 @@ if (isset($_POST['editUser'])) {
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='7' class='p-3 px-5 text-center'>No users found.</td></tr>";
+                    echo "<tr><td colspan='7' class='p-3 px-96 text-center'>No users found.</td></tr>";
                 }
 
                 $con->close();
