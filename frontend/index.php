@@ -46,6 +46,18 @@ mysqli_close($con);
         opacity: 1;
       }
     }
+    ::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: white ;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ffb000;
+    border-radius: 30px;
+  }
   </style>
 
 </head>
@@ -237,7 +249,7 @@ mysqli_close($con);
     <div class="container mx-auto px-4">
       <h1 data-aos="fade-right" data-aos-duration="2000" class="my-10 text-2xl font-bold">Why should you book using <span class="text-orange-500 font-extrabold">Hailoka</span></h1>
       <div class="flex flex-wrap -mx-2">
-        <div data-aos="fade-up" data-aos-duration="2000" class="w-full md:w-1/3 px-2">
+        <div data-aos="fade-right" data-aos-duration="2000" class="w-full md:w-1/3 px-2">
           <div class="flex flex-col items-center border-0">
             <img src="./asset/MiniHotel.png" class="w-24 h-28 p-3" alt="Kopi 1">
             <div class="text-center">
@@ -255,7 +267,7 @@ mysqli_close($con);
             </div>
           </div>
         </div>
-        <div data-aos="fade-up" data-aos-duration="2000" class="w-full md:w-1/3 px-2">
+        <div data-aos="fade-left" data-aos-duration="2000" class="w-full md:w-1/3 px-2">
           <div class="flex flex-col items-center border-0">
             <img src="./asset/Enjoy Journey.png" class="w-52 h-28 p-3" alt="Kopi 3">
             <div class="text-center">

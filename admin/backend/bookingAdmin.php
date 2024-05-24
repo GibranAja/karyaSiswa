@@ -132,13 +132,13 @@ if (isset($_POST['editUser'])) {
                         echo "<td class='p-3 px-5'>" . $row['checkin'] . "</td>";
                         echo "<td class='p-3 px-5'>" . $row['checkout'] . "</td>";
                         echo "<td class='p-3 px-5'>";
-                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['nama'] . "', '" . $row['phone'] . "', '" . $row['tipe_room'] . "', '" . $row['checkin'] . "', '" . $row['checkout'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded mr-2'>Edit</button>";
-                        echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['nama'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded'>Delete</button>";
+                        echo "<button onclick=\"openEditModal('" . $row['id'] . "', '" . $row['nama'] . "', '" . $row['phone'] . "', '" . $row['tipe_room'] . "', '" . $row['checkin'] . "', '" . $row['checkout'] . "')\" class='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 rounded mr-2'>Edit</button>";
+                        echo "<button onclick=\"openDeleteModal('" . $row['id'] . "', '" . $row['nama'] . "')\" class='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-3 rounded'>Delete</button>";
                         echo "</td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='7' class='p-3 px-96 text-center'>No users found.</td></tr>";
+                    echo "<tr><td colspan='7' class='p-3 px-5 text-center'>No users found.</td></tr>";
                 }
 
                 $con->close();

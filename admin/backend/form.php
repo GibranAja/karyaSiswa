@@ -11,10 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkin = $_POST['checkin'];
     $checkout = $_POST['checkout'];
 
-    $phone = "+62" . $phone;
+    // Menghilangkan angka 0 di awal dari nomor telepon
+    $phone = ltrim($phone, '0');
 
-    $sql = "INSERT INTO tbluser (nama, phone, namahotel, lokasi, tipe_room, checkin, checkout)
-    VALUES ('$name', '$phone', '$hotel', '$lokasi', '$room_type', '$checkin', '$checkout')";
+    // Menambahkan "+62" pada nilai phone
+    $phone_code = "+62";
+    $phone_number = (int) $phone;
+
+    $sql = "INSERT INTO tbluser (nama, phone, phone_code, namahotel, lokasi, tipe_room, checkin, checkout)
+    VALUES ('$name', '$phone_number', '$phone_code', '$hotel', '$lokasi', '$room_type', '$checkin', '$checkout')";
 
     if ($con->query($sql) === TRUE) {
         header("Location: ./bookingSucces.html");

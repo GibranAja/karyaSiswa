@@ -43,6 +43,20 @@ $row3 = mysqli_fetch_assoc($hotel1);
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <title><?php echo $nh ?></title>
 </head>
+<style>
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: white ;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ffb000;
+    border-radius: 30px;
+  }
+</style>
 
 <body class="scroll-behavior">
 <header id="navbar" class="bg-green-800 text-white px-4 md:px-32 py-5 flex items-center justify-between fixed top-0 w-full z-10">
@@ -231,6 +245,42 @@ $row3 = mysqli_fetch_assoc($hotel1);
     });
   </script>
     <script>
+      function scrollSpy() {
+        const sections = document.querySelectorAll('section[id]');
+        const navbarLinks = document.querySelectorAll('#navbar a');
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            const id = section.getAttribute('id');
+
+            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                navbarLinks.forEach(link => {
+                    link.classList.remove('text-[#FFB000]');
+                });
+
+                document.querySelector(`#navbar a[href="#${id}"]`).classList.add('text-[#FFB000]');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', scrollSpy);
+
+    document.querySelectorAll('#navbar a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
       function validateForm() {
   // Ambil nilai dari setiap input
   const name = document.querySelector('input[name="name"]').value.trim();
@@ -327,44 +377,6 @@ document.getElementById('checkin').addEventListener('change', function() {
         // Pemanggilan
         document.getElementById('checkin').value = today;
         document.getElementById('checkout').value = tomorrow;
-
-        function scrollSpy() {
-            const sections = document.querySelectorAll('section[id]');
-            const navbarLinks = document.querySelectorAll('#navbar a');
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                const id = section.getAttribute('id');
-
-                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-                    navbarLinks.forEach(link => {
-                        link.classList.remove('text-[#FFB000]');
-                    });
-
-                    document.querySelector(`#navbar a[href="#${id}"]`).classList.add('text-[#FFB000]');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', scrollSpy);
-
-        document.querySelectorAll('#navbar a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
         
         document.addEventListener('DOMContentLoaded', function() {
   var hamburgerBtn = document.getElementById('hamburger-btn');
