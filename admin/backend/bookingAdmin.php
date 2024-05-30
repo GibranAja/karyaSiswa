@@ -9,9 +9,9 @@ if (isset($_GET['nh'])) {
 
 $lh = "";
 if (isset($_GET['lh'])) {
-    $nh = $_GET['lh'];
+    $lh = $_GET['lh'];
 } elseif (isset($_SESSION['lh'])) {
-    $nh = $_SESSION['lh'];
+    $lh = $_SESSION['lh'];
 }
 
 include "./koneksi.php";
@@ -163,7 +163,10 @@ if (isset($_POST['editUser'])) {
         </div>
     </main>
 
-    <!-- Modal buat Add User -->
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="fixed inset-0 bg-black opacity-50 hidden"></div>
+
+    <!-- Modal buat Edit User -->
     <div id="editUserModal" class="modal hidden fixed z-10 inset-0 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen">
             <div class="modal-content bg-white p-8 w-96 mx-auto rounded shadow-lg">
@@ -236,15 +239,15 @@ if (isset($_POST['editUser'])) {
     <!-- JavaScript for opening and closing modal -->
     <script>
         function openModal(id) {
+            document.getElementById('modalOverlay').classList.remove('hidden');
             document.getElementById(id).classList.remove('hidden');
             document.body.classList.add('overflow-hidden');
-            document.getElementById(modalId).classList.remove('hidden');
         }
 
         function closeModal(id) {
+            document.getElementById('modalOverlay').classList.add('hidden');
             document.getElementById(id).classList.add('hidden');
             document.body.classList.remove('overflow-hidden');
-            document.getElementById(modalId).classList.add('hidden');
         }
 
         function openEditModal(id, name, phone, roomType, checkin, checkout) {

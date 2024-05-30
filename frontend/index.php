@@ -5,16 +5,11 @@ include "../admin/backend/koneksi.php";
 
 $query = "SELECT namahotel, gambar_hotel, deskripsihotel, lokasi FROM tblhotel";
 $hotel1 = mysqli_query($con, $query);
-$row = mysqli_fetch_assoc($hotel1);
-$row2 = mysqli_fetch_assoc($hotel1);
-$row3 = mysqli_fetch_assoc($hotel1);
-$row4 = mysqli_fetch_assoc($hotel1);
-$row5 = mysqli_fetch_assoc($hotel1);
-$row6 = mysqli_fetch_assoc($hotel1);
-$row7 = mysqli_fetch_assoc($hotel1);
-$row8 = mysqli_fetch_assoc($hotel1);
-$row9 = mysqli_fetch_assoc($hotel1);
 
+$rows = [];
+while ($row = mysqli_fetch_assoc($hotel1)) {
+  $rows[] = $row;
+}
 
 mysqli_close($con);
 ?>
@@ -37,6 +32,15 @@ mysqli_close($con);
       animation: fadeIn 1s ease-in-out forwards;
     }
 
+    .fade-out {
+      opacity: 1;
+      transition: opacity 2.5s ease-out;
+    }
+
+    .fade-out.hidden {
+      opacity: 0;
+    }
+
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -46,24 +50,25 @@ mysqli_close($con);
         opacity: 1;
       }
     }
+
     ::-webkit-scrollbar {
-    width: 9px;
-  }
+      width: 5px;
+    }
 
-  ::-webkit-scrollbar-track {
-    background-color: white ;
-  }
+    ::-webkit-scrollbar-track {
+      background-color: white;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    background: #ffb000;
-    border-radius: 30px;
-  }
+    ::-webkit-scrollbar-thumb {
+      background: #ffb000;
+      border-radius: 30px;
+    }
   </style>
 
 </head>
 
-<body style="scroll-behavior: smooth;" class="bg-[#f0f0f0]">
-<header id="navbar" class="bg-green-800 text-white px-4 md:px-32 py-5 flex items-center justify-between fixed top-0 w-full z-20">
+<body style="scroll-behavior: smooth;" class="bg-[#f0f0f0 overflow-x-hidden]">
+  <header id="navbar" class="bg-green-800 text-white px-4 md:px-32 py-5 flex items-center justify-between fixed top-0 w-full z-20">
     <a href="#" class="text-2xl md:text-4xl font-bold mr-4 md:mr-10">
       <p class="text-[#FFB000]">Hai<span class="text-[#F5F5DC]">loka</span></p>
     </a>
@@ -78,6 +83,11 @@ mysqli_close($con);
         <li class="mb-2 md:mb-0">
           <a href="#services" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Services</a>
         </li>
+        <li class="mb-2 md:mb-0">
+          <form action="logout.php" method="post">
+            <button type="submit" class="hover:text-green-500 hover:bg-green-700 rounded-full p-1.5 duration-200 transition-all">Logout</button>
+          </form>
+        </li>
       </ul>
     </nav>
     <button class="md:hidden" id="hamburger-btn">
@@ -85,7 +95,7 @@ mysqli_close($con);
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button>
-</header>
+  </header>
 
   <!-- Home Section -->
   <section id="Home" class="pt-24 md:pt-12">
@@ -127,122 +137,35 @@ mysqli_close($con);
     </main>
   </section>
 
+  <?php if (isset($_SESSION['session_username'])) : ?>
+    <div id="welcome-message" class="absolute top-[110px] left-[700px] bg-green-600 text-white p-4 rounded shadow-lg">
+      <p>Hai, <?php echo $_SESSION['session_username']; ?>!</p>
+    </div>
+  <?php endif; ?>
+
   <!-- Hotel Section -->
   <section id="hotel">
     <h2 data-aos="fade-down" data-aos-duration="2000" class="text-center text-2xl text-700 mb-10 font-bold"><span class="text-[#FF902A]">Recomended</span> for you</h2>
     <div id="cardContainer" class="flex flex-wrap justify-around m-5">
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row['gambar_hotel']; ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row['lokasi'] ?></span>
+      <div id="cardContainer" class="flex flex-wrap justify-around m-5">
+        <?php foreach ($rows as $row) : ?>
+          <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
+            <img class="w-[384px] h-[336px]" src="<?php echo $row['gambar_hotel']; ?>" alt="Gambar Hotel">
+            <div class="px-6 py-4">
+              <div class="flex justify-between items-center mb-2">
+                <div class="font-bold text-xl -mb-2"><?php echo $row['namahotel']; ?></div>
+                <span class="text-[#374B43] font-bold text-lg"><?php echo $row['lokasi']; ?></span>
+              </div>
+              <div class="mt-4 flex justify-end">
+                <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row['namahotel']; ?>&gh=<?php echo $row['gambar_hotel']; ?>&lh=<?php echo $row['lokasi']; ?>&dh=<?php echo $row['deskripsihotel']; ?>';">Book Now</button>
+              </div>
+            </div>
           </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row['namahotel'] ?>&gh=<?php echo $row['gambar_hotel'] ?>&lh=<?php echo $row['lokasi'] ?>&dh=<?php echo $row['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row2['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row2['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row2['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row2['namahotel'] ?>&gh=<?php echo $row2['gambar_hotel'] ?>&lh=<?php echo $row2['lokasi'] ?>&dh=<?php echo $row2['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
+      <div class="flex justify-center items-center">
+        <button id="loadMore" class="bg-[#416657] text-[#E2F0FF] rounded px-4 py-2 mt-6 mb-12 hover:bg-[#12372A] hover:text-white transition-colors duration-300">See Less</button>
       </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row3['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row3['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row3['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row3['namahotel'] ?>&gh=<?php echo $row3['gambar_hotel'] ?>&lh=<?php echo $row3['lokasi'] ?>&dh=<?php echo $row3['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
-      </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row4['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row4['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row4['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row4['namahotel'] ?>&gh=<?php echo $row4['gambar_hotel'] ?>&lh=<?php echo $row4['lokasi'] ?>&dh=<?php echo $row4['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
-      </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row5['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row5['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row5['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row5['namahotel'] ?>&gh=<?php echo $row5['gambar_hotel'] ?>&lh=<?php echo $row5['lokasi'] ?>&dh=<?php echo $row5['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
-      </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row6['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row6['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row6['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row6['namahotel'] ?>&gh=<?php echo $row6['gambar_hotel'] ?>&lh=<?php echo $row6['lokasi'] ?>&dh=<?php echo $row6['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
-      </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row7['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row7['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row7['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row7['namahotel'] ?>&gh=<?php echo $row7['gambar_hotel'] ?>&lh=<?php echo $row7['lokasi'] ?>&dh=<?php echo $row7['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
-      </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row8['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row8['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row8['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row8['namahotel'] ?>&gh=<?php echo $row8['gambar_hotel'] ?>&lh=<?php echo $row8['lokasi'] ?>&dh=<?php echo $row8['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
-      </div>
-      <div data-aos="zoom-in-up" data-aos-duration="2000" class="max-w-sm rounded-lg overflow-hidden shadow-lg m-2 bg-white">
-        <img class="w-[384px] h-[336px]" src="<?php echo $row9['gambar_hotel'] ?>" alt="Gambar Hotel">
-        <div class="px-6 py-4">
-          <div class="flex justify-between items-center mb-2">
-            <div class="font-bold text-xl -mb-2"><?php echo $row9['namahotel'] ?></div>
-            <span class="text-[#374B43] font-bold text-lg "><?php echo $row9['lokasi'] ?></span>
-          </div>
-          <div class="mt-4 flex justify-end">
-            <button class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300" onclick="window.location.href = 'hotel.php?nh=<?php echo $row9['namahotel'] ?>&gh=<?php echo $row9['gambar_hotel'] ?>&lh=<?php echo $row9['lokasi'] ?>&dh=<?php echo $row9['deskripsihotel'] ?>';">Book Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-center items-center">
-      <button id="loadMore" class="bg-[#416657] text-[#E2F0FF] text-sm rounded px-4 py-2 hover:bg-[#12372A] hover:text-white transition-colors duration-300">See Less</button>
-    </div>
   </section>
 
   <section class="flex flex-col items-center" id="services">
@@ -312,27 +235,29 @@ mysqli_close($con);
   <script>
     AOS.init({
       // Global settings:
-  disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-  startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-  initClassName: 'aos-init', // class applied after initialization
-  animatedClassName: 'aos-animate', // class applied on animation
-  useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-  disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-  debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-  throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-  
+      disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+      startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
+      initClassName: 'aos-init', // class applied after initialization
+      animatedClassName: 'aos-animate', // class applied on animation
+      useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
+      disableMutationObserver: false, // disables automatic mutations' detections (advanced)
+      debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
+      throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
 
-  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 400, // values from 0 to 3000, with step 50ms
-  easing: 'ease', // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+
+      // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
+      offset: 120, // offset (in px) from the original trigger point
+      delay: 0, // values from 0 to 3000, with step 50ms
+      duration: 400, // values from 0 to 3000, with step 50ms
+      easing: 'ease', // default easing for AOS animations
+      once: false, // whether animation should happen only once - while scrolling down
+      mirror: false, // whether elements should animate out while scrolling past them
+      anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
 
     });
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const cards = document.querySelectorAll('.max-w-sm.rounded-lg.overflow-hidden.shadow-lg.m-2.bg-white');
@@ -408,38 +333,63 @@ mysqli_close($con);
 
 
     document.addEventListener('DOMContentLoaded', function() {
-  var hamburgerBtn = document.getElementById('hamburger-btn');
-  var navMenu = document.getElementById('nav-menu');
+      var hamburgerBtn = document.getElementById('hamburger-btn');
+      var navMenu = document.getElementById('nav-menu');
 
-  hamburgerBtn.addEventListener('click', function() {
-    // Toggle class 'open' on hamburger button
-    hamburgerBtn.classList.toggle('open');
+      hamburgerBtn.addEventListener('click', function() {
+        // Toggle class 'open' on hamburger button
+        hamburgerBtn.classList.toggle('open');
 
-    // Check if 'open' class is present, then change SVG to 'X' or hamburger menu
-    if (hamburgerBtn.classList.contains('open')) {
-      hamburgerBtn.innerHTML = `
+        // Check if 'open' class is present, then change SVG to 'X' or hamburger menu
+        if (hamburgerBtn.classList.contains('open')) {
+          hamburgerBtn.innerHTML = `
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>`;
-    } else {
-      hamburgerBtn.innerHTML = `
+        } else {
+          hamburgerBtn.innerHTML = `
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>`;
-    }
+        }
 
-    // Toggle display of navigation menu
-    navMenu.classList.toggle('hidden');
-  });
-});
+        // Toggle display of navigation menu
+        navMenu.classList.toggle('hidden');
+      });
+    });
 
 
-const hotelBtn = document.getElementById('hotel-btn');
-  const hotelSection = document.getElementById('hotel');
+    const hotelBtn = document.getElementById('hotel-btn');
+    const hotelSection = document.getElementById('hotel');
 
-  hotelBtn.addEventListener('click', () => {
-    hotelSection.scrollIntoView({ behavior: 'smooth' });
-  });
+    hotelBtn.addEventListener('click', () => {
+      hotelSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var welcomeMessage = document.getElementById("welcome-message");
+      if (welcomeMessage) {
+        // Animasi masuk
+        gsap.from(welcomeMessage, {
+          duration: 1,
+          opacity: 0,
+          y: -50,
+          ease: "power1.out"
+        });
+
+        // Animasi keluar setelah 2.5 detik
+        setTimeout(function() {
+          gsap.to(welcomeMessage, {
+            duration: 2.5,
+            opacity: 0,
+            y: -50,
+            ease: "power1.out"
+          });
+        }, 2500);
+      }
+    });
   </script>
 </body>
 
